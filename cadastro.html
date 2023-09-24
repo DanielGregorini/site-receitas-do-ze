@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,62 +10,85 @@
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
 
 </head>
+
 <body>
-    
-    <div class="header_logo_login">
+
+    <header class="header_logo_login">
         <img src="imagens/taco.png" alt="logo" width="78" height="78">
         <h1 class="oleo-font texto-logo">Receitas do Zé</h1>
-    </div>
-   
+    </header>
 
-    
+
     <form action="" method="">
-        <label for="nome" class="form_label">Nome:</label>
-        <input type="text" id="nome" name="senha" required class="form_email">
+
+        <h1>CADASTRO</h1>
+
+        <p>Desvende um mundo de sabor ao se inscrever no nosso site de receitas. Faça parte de uma comunidade apaixonada por culinária, onde você terá acesso a um vasto catálogo de receitas incríveis de todos os cantos do mundo. Aprenda com chefs experientes. Registre-se agora e comece a explorar suas aventuras culinárias!</p>
+
         <br>
-        
-        <label for="email" class="form_label">Data de Nascimento:</label>
-        <input type="date" id="datadenacimento" name="Data de Nascimento" required class="form_email"> 
         <br>
 
-        <label for="email" class="form_label">E-mail:</label>
-        <input type="email" id="email" name="email" required class="form_email"> 
-        <br>
-        <label for="senha" class="form_label">Senha:</label>
-        <input type="password" id="senha" name="senha" required class="form_email">
-        <br>
-    
+        <div>
+            <label for="nome" class="form_label">Nome:</label>
+            <input type="text" id="nome" name="senha" required class="form_input">
+            <br>
+            <label for="email" class="form_label">E-mail:</label>
+            <input type="email" id="email" name="email" required class="form_input">
+            <br>
+
+            <label for="cidade" class="form_label">Cidade:</label>
+            <input type="text" id="email" name="cidade" required class="form_input">
+            <br>
+
+            <label for="estado" class="form_label">Estado:</label>
+            <input type="text" id="estado" name="estado" required class="form_input">
+            <br>
+            <br>
+
+            <label for="senha" class="form_label form_senha">Senha:</label>
+            <input type="password" id="senha" name="senha" required class="form_input">
+            <br>
         
-    
-        <input type="submit" value="Entrar" class="form_entrar">
+            <label for="datadenacimento" class="form_label">Data de Nascimento:</label>
+            <input type="date" id="datadenacimento" name="Data de Nascimento" required class="form_input">
+            <br>
+            <input type="submit" value="Cadastrar" class="form_cadastrar">
+
+            <p>Ao se cadastrar em nosso site, o usuário aceita nossos Termos de Serviço, que são essenciais para manter um ambiente seguro e respeitoso em nossa comunidade.</p>
+            
+        </div>
+        
+        <a href="login.html">Já tem uma conta?</a>
+
+        
     </form>
 
-    
+
     <footer>
-        
+
         <div class="footer_logo">
             <img src="imagens/taco.png" alt="logo" width="48" height="48">
             <h1 class="oleo-font texto-logo">Receitas do Zé</h1>
         </div>
 
-        
+
 
         <div class="footer_links">
 
             <div>
-                <a href="#">Inicio</a>
+                <a href="index.html">Inicio</a>
             </div>
 
             <div>
                 <a href="#">Busca</a>
             </div>
-                
+
             <div>
                 <a href="login.html">Login</a>
             </div>
-                
+
             <div>
-                <a href="#">Cadastro</a>
+                <a href="cadastro.html">Cadastro</a>
             </div>
 
         </div>
@@ -78,12 +102,14 @@
             <div>
                 <img src="imagens/instagram.png" alt="logo" width="48" height="48">
             </div>
+
             <div>
                 <img src="imagens/twitter.png" alt="logo" width="48" height="48">
             </div>
-        </div>
 
+        </div>
 
     </footer>
 </body>
+
 </html>
