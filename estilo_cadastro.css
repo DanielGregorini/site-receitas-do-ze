@@ -67,15 +67,15 @@ form > div {
 }
 
 form > a{
-    border-radius: 10px;
-    border: 1px solid black;
+
+
     text-align: center;
     margin-left: 45px;
     padding: 10px;
     display: inline-block;
-    background-color: #c4c4c4;
+ 
     font-weight: bold;
-    color: rgb(43, 43, 43);
+    color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 22px;
 

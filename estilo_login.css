@@ -40,16 +40,36 @@ form {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+form > a{
+   
+   
+    text-align: center;
+    margin-left: 45px;
+    padding: 10px;
+    display: inline-block;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 22px;
+
+}
+
 
 .form_label{
 
     font-size: 20px;
     padding: 10px;
+    
 }
 
 
 .form_email{
     margin-bottom: 20px;  
+    border-radius: 8px;
+}
+
+.form_senha{
+    border-radius: 8px;
 }
 
 
@@ -57,7 +77,14 @@ form {
     font-size: 20px;
     margin-top: 60px;
     margin-left: 55px;
+    border-radius: 10px;
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 55px;
+    color: #ffffff;
+    background-color: red;
 }
+
 
 form:hover{
     top:-2px;
@@ -65,11 +92,11 @@ form:hover{
 }
 
 input:hover{
-    background-color: #e4e4e4;
+    background-color: #b4b4b4;
 }
 
 
-form > input {
+form > div> input {
     padding: 10px 60px 10px 60px;
 }
 /* -------------------------------------------------------------------------- */
@@ -80,11 +107,8 @@ form > input {
 /*Rodapé*/
 
 body > footer{
+
     clear: left;
-
-}
-
-body > footer{
     margin: 0;
     background-color: #B19242;
     padding: 80px 30px 30px 40px;
@@ -102,26 +126,32 @@ body > footer > div{
 .footer_redesocial{
     display: flex;
     padding: 10px;
-    flex: 1;
     flex-wrap: wrap;
-    
+    flex: 1;
+    width: 33%;
+    align-items: center;
+    justify-content: space-around;
    
 }
 
 .footer_redesocial > div{
-    
+
     padding: 10px;
     justify-content: center; 
-    align-items: center;
-    
+    text-align: center;
+    width: auto;
    
 }
 
 .footer_links{
+     /* Defina a altura desejada */
+    text-align: center;
     display: flex;
     padding: 10px;
     margin: 40px;
     flex: 1;
+    width: 33%;
+    justify-content: space-around;
 }
 
 .footer_links > div{
@@ -159,7 +189,6 @@ body > footer > div{
 .footer_logo > h1{
     font-weight: normal;
 }
-
 /* -------------------------------------------------------------------------- */
 
 
