@@ -1,0 +1,165 @@
+
+/* Fonte Padrao */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #D9D9D9;
+    margin: 0;
+}
+
+.oleo-font {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+/* -------------------------------------------------------------------------- */
+
+
+.header_logo_login{
+    display: flex;
+    font-size: 30px;
+    margin-top: 50px;
+    text-align: center;
+    margin-bottom: 50px;
+    justify-content: center;
+}
+
+.header_logo_login > img{
+    margin-top: 40px;
+    padding-right: 20px;
+}
+
+form {
+    
+    margin-left: 400px;
+    margin-right: 400px;
+    margin-bottom: 200px;
+    text-align: center;
+    padding: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+
+.form_label{
+
+    font-size: 20px;
+    padding: 10px;
+}
+
+
+.form_email{
+    margin-bottom: 20px;  
+}
+
+
+.form_entrar{
+    font-size: 20px;
+    margin-top: 60px;
+    margin-left: 55px;
+}
+
+form:hover{
+    top:-2px;
+    box-shadow:0 2px 2px #666
+}
+
+input:hover{
+    background-color: #e4e4e4;
+}
+
+
+form > input {
+    padding: 10px 60px 10px 60px;
+}
+/* -------------------------------------------------------------------------- */
+
+
+/* -------------------------------------------------------------------------- */
+
+/*Rodapé*/
+
+body > footer{
+    clear: left;
+
+}
+
+body > footer{
+    margin: 0;
+    background-color: #B19242;
+    padding: 80px 30px 30px 40px;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+body > footer > div{
+    margin: 5px;
+}
+
+.footer_redesocial{
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    flex-wrap: wrap;
+    
+   
+}
+
+.footer_redesocial > div{
+    
+    padding: 10px;
+    justify-content: center; 
+    align-items: center;
+    
+   
+}
+
+.footer_links{
+    display: flex;
+    padding: 10px;
+    margin: 40px;
+    flex: 1;
+}
+
+.footer_links > div{
+
+    padding: 10px;
+   
+    text-decoration: none;
+    align-items: center;
+}
+
+.footer_links > div > a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 25px;
+    text-align: center;
+    flex: 1;
+  
+}
+
+.footer_logo{
+    width: 20%;
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    
+}
+
+.footer_logo > img{
+    padding: 18px;
+    font-weight: normal;
+
+}
+
+.footer_logo > h1{
+    font-weight: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+
+

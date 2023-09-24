@@ -1,0 +1,232 @@
+
+header{
+    background-color: #B19242;
+    margin: 0px;
+    border: 0px;
+    padding: 5px 0px;
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Botão do meio de pesquisa */
+header > .header_pesquisa{
+    text-align: center; 
+    padding: 30px; 
+}
+
+header > .header_pesquisa > .search-bar {
+      padding: 10px 20px; /* Espaçamento interno para o botão */
+      background-color: #fdfdfd; /* Cor de fundo do botão */
+      color: #080808; /* Cor do texto do botão */
+      border: none; /* Remover borda do botão */
+      border-radius: 5px; /* Cantos arredondados */
+      font-size: 16px; /* Tamanho da fonte */
+      cursor: pointer; /* Cursor de mão ao passar o mouse */
+
+}
+
+header > .header_pesquisa > .confirm-button {
+      text-align: center;
+      width: 80px; 
+      padding: 10px; 
+      border: 1px solid #000000; 
+      border-radius: 5px; 
+      font-size: 15px; 
+}
+/* -------------------------------------------------------------------------- */
+
+/* Logo no header */
+
+header > .header_logo{
+    display: flex;
+}   
+
+header > div > img {
+    float: left;
+    padding: 18px;
+}
+
+header > .header_logo > h1 {
+    font-weight: normal;
+}
+
+.logo-topo{
+    padding: 20px;
+}
+/* -------------------------------------------------------------------------- */
+
+/* Fonte Padrao */
+
+body{
+    font-family: 'Roboto', sans-serif;
+    background-color: #D9D9D9;
+    margin: 0;
+}
+
+.oleo-font {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+/* -------------------------------------------------------------------------- */
+
+
+/* menu de categorias */
+nav {
+    
+    margin-top: 80px;
+    float: left;
+    width: 22%;
+    padding: 0px;
+    margin-left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 300px;
+}
+
+body > nav > ul {
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    list-style-type: none;
+}
+
+body > nav > ul > li {
+    text-align: center;
+    border: 1px solid rgb(0, 0, 0);
+    padding: 10px;
+    background-color: #ffffff;
+    margin-top: 10px;
+    margin-left: 20px;
+    border-radius: 10px;
+}
+
+body > nav > ul > li:houver {
+    background-color: #4100f3;
+    color: #000000;
+}
+
+body > nav > ul > li > a {
+    text-align: center;
+    color: black;
+    text-decoration: none;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* Imagens de receitas mais pesquisadas */
+.receitar-maisvitidas {
+    
+    justify-content: center;
+    float: right;
+    width: 75%;
+    padding: 0px;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    margin-bottom: 100px;
+    flex-wrap: wrap;
+    
+}
+
+.receitar-maisvitidas > div {
+    align-items: center;
+    width: 30%;
+    margin-right: 80px; /* Espaço entre as imagens */
+    padding: 15px;
+    clear: left;
+    
+}
+.receitar-maisvitidas > div > img {
+    border-radius: 10px;
+    
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*Rodapé*/
+
+body > footer{
+    clear: left;
+
+}
+
+body > footer{
+    margin: 0;
+    background-color: #B19242;
+    padding: 80px 30px 30px 40px;
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    justify-content:space-between;
+    flex-wrap: wrap;
+}
+
+body > footer > div{
+    margin: 5px;
+}
+
+.footer_redesocial{
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    flex-wrap: wrap;
+    
+   
+}
+
+.footer_redesocial > div{
+    
+    padding: 10px;
+    justify-content: center; 
+    align-items: center;
+    
+   
+}
+
+.footer_links{
+    display: flex;
+    padding: 10px;
+    margin: 40px;
+    flex: 1;
+}
+
+.footer_links > div{
+
+    padding: 10px;
+   
+    text-decoration: none;
+    align-items: center;
+}
+
+.footer_links > div > a{
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    font-size: 25px;
+    text-align: center;
+    flex: 1;
+  
+}
+
+.footer_logo{
+    width: 20%;
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    
+}
+
+.footer_logo > img{
+    padding: 18px;
+    font-weight: normal;
+
+}
+
+.footer_logo > h1{
+    font-weight: normal;
+}
+
+/* -------------------------------------------------------------------------- */
+
+
