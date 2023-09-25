@@ -68,81 +68,164 @@ body{
 }
 
 /* -------------------------------------------------------------------------- */
+/* nome da receita e a foto */
 
-
-/* menu de categorias */
-nav {
-    
-    margin-top: 80px;
-    float: left;
-    width: 22%;
-    padding: 0px;
-    margin-left: 30px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 300px;
-}
-
-body > nav > ul {
+main > .main_nome_receita{
+    margin-top: 50px;
     width: 100%;
-    margin: 0px;
-    padding: 0px;
-    list-style-type: none;
+    display: flex;
+    justify-content: center;
 }
 
-body > nav > ul > li {
-    text-align: center;
-    border: 1px solid rgb(0, 0, 0);
-    padding: 10px;
-    background-color: #ffffff;
-    margin-top: 10px;
-    margin-left: 20px;
+main > .main_nome_receita > img{
+    width: 600px;
+    float:inline-start;
+    height:  350px;
     border-radius: 10px;
+    margin-top: 20px;
 }
 
-body > nav > ul > li:houver {
-    background-color: #4100f3;
-    color: #000000;
+main > .main_nome_receita > h1{
+
+    float: right;
+    margin-top: 40px;
+    margin-left: 80px;
+    font-size: 100px;
+   
+}
+/* -------------------------------------------------------------------------- */
+
+/* Descrição*/
+
+main > .main_descricao{
+    margin-top: 50px;
+    display: flex;
+    width: auto;
+    padding: 0px 150px 0px 150px;
+ 
 }
 
-body > nav > ul > li > a {
-    text-align: center;
-    color: black;
-    text-decoration: none;
+main > .main_descricao > h1{
+    font-size: 50px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: normal;
+}
+
+main > .main_descricao > p{
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 24px;
+}
+
+
+
+
+
+
+
+/* -------------------------------------------------------------------------- */
+
+/* lista de ingredientes e modo de preparo*/
+
+main > .main_ingredientes_modo{
+    margin-top: 50px;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-around;
+}
+
+main > .main_ingredientes_modo > .ingredientes{
+    margin-top: 50px;
+    width: 35%;
+    min-height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+main > .main_ingredientes_modo > .ingredientes > img{
+    margin-top: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+  
+}
+
+main > .main_ingredientes_modo > .ingredientes > h1{
+    
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 50px;
+    font-weight: normal;
+  
+    
+}
+
+
+main > .main_ingredientes_modo > .ingredientes > ul{
+   
+    float: inline-start;
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 150px;
+    list-style: none;
+}
+
+main > .main_ingredientes_modo > .ingredientes > ul > li{
+   
+    font-size: 20px;
+    margin-bottom: 8px;
 }
 
 /* -------------------------------------------------------------------------- */
 
-/* Imagens de receitas mais pesquisadas */
-.receitar-maisvitidas {
-    
-    justify-content: center;
-    float: right;
-    width: 75%;
-    padding: 0px;
+main > .main_ingredientes_modo > .modo_de_preparo{
+  
+    margin-top: 50px;
+    width: 35%;
+    min-height: 500px;
     display: flex;
-    justify-content: center; 
-    align-items: center;
-    margin-bottom: 100px;
+    justify-content: flex-start;
     flex-wrap: wrap;
-    max-width: 70%;
     
 }
 
-.receitar-maisvitidas > div {
-    align-items: center;
+main > .main_ingredientes_modo > .modo_de_preparo > img{
+  
+    margin-top: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
     
+}
 
-    margin-right: 80px; /* Espaço entre as imagens */
-    padding: 15px;
-    clear: left;
+
+main > .main_ingredientes_modo > .modo_de_preparo > h1{
+  
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 50px;
+    font-weight: normal;
+  
     
 }
-.receitar-maisvitidas > div > img {
-    border-radius: 10px;
-    
+
+main > .main_ingredientes_modo > .modo_de_preparo > ol{
+   
+    float: inline-start;
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 150px;
 }
+
+main > .main_ingredientes_modo > .modo_de_preparo > ol > li{
+   
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+
+
+
 
 /* -------------------------------------------------------------------------- */
 

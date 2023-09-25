@@ -3,7 +3,7 @@
 
 body{
     font-family: 'Roboto', sans-serif;
-    background-color: #D9D9D9;
+    background-color: #ededed;
     margin: 0;
 }
 
@@ -30,8 +30,8 @@ body{
 
 form {
     
-    margin-left: 600px;
-    margin-right: 600px;
+    margin-left: 400px;
+    margin-right: 400px;
     margin-bottom: 200px;
     text-align: center;
     padding: 40px;
