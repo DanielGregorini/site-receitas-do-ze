@@ -141,7 +141,7 @@ form > div > input {
 
 body > footer{
 
-    clear: left;
+    clear: both;
     margin: 0;
     background-color: #B19242;
     padding: 80px 30px 30px 40px;
