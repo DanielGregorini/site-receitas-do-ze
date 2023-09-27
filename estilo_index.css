@@ -5,12 +5,26 @@ header{
     border: 0px;
     padding: 5px 0px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
 /* Botão do meio de pesquisa */
+header > .header_pesquisa{
+    text-align: center; 
+    padding: 30px; 
+}
 
+header > .header_pesquisa > .search-bar {
+      padding: 10px 20px; /* Espaçamento interno para o botão */
+      background-color: #fdfdfd; /* Cor de fundo do botão */
+      color: #080808; /* Cor do texto do botão */
+      border: none; /* Remover borda do botão */
+      border-radius: 5px; /* Cantos arredondados */
+      font-size: 16px; /* Tamanho da fonte */
+      cursor: pointer; /* Cursor de mão ao passar o mouse */
 
+}
 
 header > .header_pesquisa > .confirm-button {
       text-align: center;
@@ -30,16 +44,29 @@ header > .header_logo{
 
 header > div > img {
     float: left;
-    padding: 18px;
+    padding: 8px;
 }
 
 header > .header_logo > h1 {
     font-weight: normal;
 }
 
-.logo-topo{
-    padding: 20px;
+/* -------------------------------------------------------------------------- */
+/* carrosel de imagens*/
+
+
+.bem_vindo{
+    text-align: center;
+    font-size: 50px;
+    margin: 80px 0px 40px 0px;
 }
+.logo-topo{
+    padding: 30px 20px;
+}
+
+
+
+
 /* -------------------------------------------------------------------------- */
 
 /* Fonte Padrao */
@@ -52,116 +79,83 @@ body{
 
 .oleo-font {
     font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: normal;
 }
 
 /* -------------------------------------------------------------------------- */
 
-.pesquisa{
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-left: 30px;
-    margin-right: 30px;
-    text-align: center; 
-    padding: 5px;
-    border-radius: 10px;
-    background-color: #dadada;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    
-}
 
-.pesquisa:hover{
-    top:-2px;
-    box-shadow:0 2px 2px #666
+/* menu de categorias de comidas */
 
-}
-
-.pesquisa > .search-bar {
-    padding: 10px 20px; /* Espaçamento interno para o botão */
-    background-color: #fdfdfd; /* Cor de fundo do botão */
-    color: #080808; /* Cor do texto do botão */
-    border: none; /* Remover borda do botão */
-    border-radius: 5px; /* Cantos arredondados */
-    font-size: 16px; /* Tamanho da fonte */
-    cursor: pointer; /* Cursor de mão ao passar o mouse */
-    width: 85%;
-}
-
-.pesquisa > .search-bar:hover{
-    font-size: 18px;
-    background-color: #eeeeee;
-    
-
-}
-
-
-.pesquisa > button{
+.menu {
     padding: 10px 20px;
-    font-size: 16px;
-    border-radius: 5px;
-    width: 10%;
-    text-align: center;
-    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
 }
+
+.menu  > a {
+    display: inline-block;
+
+    border: 3px solid rgb(0, 0, 0);
+    background-color: #ffffff;
+    margin: 10px 30px;
+    padding: 15px;
+    border-radius: 10px;
+    width: 18%;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    font-size: 30px;
+    text-align: center;
+
+}
+
+/* Estilos para tornar o menu responsivo */
+@media screen and (max-width: 768px) {
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .menu a {
+        margin: 5px 5px;
+        width: 80%;
+    }
+}
+
 /* -------------------------------------------------------------------------- */
 
-/* Receitas e seus nomes e descrição*/
+/* Imagens de receitas mais pesquisadas  main*/
+
 
 main{
-    margin: 50px 20px;
-
-    min-height: 500px;
+    margin: 100px 0;
 }
 
-main > div {
-    margin: 25px 0px;
-    padding: 10px;
-    background-color: #dddddd;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+main > h1{
+    text-align: center;
+    font-size: 50px;
+
+}
+
+main > .lista_receitas{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
     
 }
 
-main > div:hover {
-    top:-2px;
-    box-shadow:0 2px 2px #1100ff
-    
+main > .lista_receitas > a > img{
+    width: 400px;
+    height: 300px;
+    margin: 10px 20px;
+    border-radius: 10px;    
 }
-
-/*se quiser adicionar imagem junto no nome da receita*/
-/*
-main > div > img{
-
-   margin: 10px;
-   display: inline-block;
-   width: 85px;
-   height: 85px;
-   border-radius: 10px;
-*/
-
-/*Nome da receita, link para pagina da receita*/
-main > div > a{
-    display: inline-block;
-    font-family: 'Oleo Script Swash Caps', cursive;
-    margin-left: 20px;
-    padding: 10px;
-    font-size: 48px;
-    text-decoration: none;
-    color: black;
-}
-
-/*descricao*/
-main > div > p{
-    font-size: 20px;
-    margin-left: 30px;
-    
-}
-
-
 
 
 /* -------------------------------------------------------------------------- */
-
-/*Rodapé*/
 
 /*Rodapé*/
 
@@ -252,5 +246,3 @@ body > footer > div{
 }
 
 /* -------------------------------------------------------------------------- */
-
-

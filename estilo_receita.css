@@ -5,6 +5,7 @@ header{
     border: 0px;
     padding: 5px 0px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 
@@ -51,6 +52,29 @@ header > .header_logo > h1 {
 }
 
 .logo-topo{
+    padding: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/* Logo no header */
+
+header > .header_logo{
+    display: flex;
+}   
+
+header > div > img {
+    float: left;
+    padding: 18px;
+}
+
+header > .header_logo > h1 {
+    font-weight: normal;
+}
+
+.logo-topo{
     padding: 20px;
 }
 /* -------------------------------------------------------------------------- */
@@ -58,8 +82,9 @@ header > .header_logo > h1 {
 /* Fonte Padrao */
 
 body{
-    font-family: 'Roboto', sans-serif;
-    background-color: #ededed;
+    font-family: 'Roboto', sans-serif;  
+    background-color: #f6f6f6;
+
     margin: 0;
 }
 
@@ -132,16 +157,6 @@ main > .main_nota > #rating {
     font-size: 16px;
     border-radius: 10px;
 }
-
-
-
-
-
-
-
-
-
-
 
 /* -------------------------------------------------------------------------- */
 
@@ -247,6 +262,7 @@ main > .main_ingredientes_modo > .modo_de_preparo > ol > li{
 main > .main_fotos {
     margin-top: 50px;
     text-align: center; /* Centralizar o conteúdo */
+    margin-bottom: 50px;
 }
 
 main > .main_fotos > h1 {
@@ -266,6 +282,44 @@ main > .main_fotos > .receitas_fotos > img {
     height: auto; /* Manter a proporção original da imagem */
     margin: 10px; /* Adicionar um espaço entre as imagens */
 }
+/* -------------------------------------------------------------------------- */
+
+/*Comentários*/
+
+main > .main_comentarios{
+    
+    margin-bottom: 10%;
+
+}
+main > .main_comentarios > div{
+    
+    padding: 5% 7% 0 7%;
+
+}
+
+main > .main_comentarios > h1{
+    
+    padding: 0% 7% 0 7%;
+    font-size: 80px;
+    text-align: center;
+    font-weight: normal;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+
+/*Nome do usuario que fez o comentário*/
+main > .main_comentarios > div > h1{
+    
+    font-size: 40px;
+}
+
+/*Conteúdo do comentário*/
+main > .main_comentarios > div > p{
+    
+    font-size: 20px;
+    padding: 0 4% 0 4%;
+    text-align: justify;
+}
 
 
 /* -------------------------------------------------------------------------- */
@@ -281,7 +335,7 @@ body > footer{
     display: flex;
     width: auto;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     flex-wrap: wrap;
 }
 
@@ -313,11 +367,13 @@ body > footer > div{
      /* Defina a altura desejada */
     text-align: center;
     display: flex;
-    padding: 10px;
-    margin: 40px;
+    padding: 5px;
+    margin: 20px;
     flex: 1;
-    width: 33%;
+    width: 25%;
     justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
 }
 
 .footer_links > div{
@@ -331,10 +387,10 @@ body > footer > div{
 .footer_links > div > a{
     text-decoration: none;
     color: black;
-    padding: 10px;
     font-size: 25px;
     text-align: center;
     flex: 1;
+    width: 20%;
   
 }
 
@@ -355,6 +411,7 @@ body > footer > div{
 .footer_logo > h1{
     font-weight: normal;
 }
+
 
 /* -------------------------------------------------------------------------- */
 
