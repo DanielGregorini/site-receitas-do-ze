@@ -6,6 +6,7 @@ header{
     padding: 5px 0px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* Botão do meio de pesquisa */
@@ -25,20 +26,26 @@ header > .header_pesquisa > .confirm-button {
 /* Logo no header */
 
 header > .header_logo{
+   
+} 
+
+header > .header_logo > a{
     display: flex;
-}   
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}  
 
-header > div > img {
+header > .header_logo > a >  img {
     float: left;
-    padding: 18px;
+    padding: 8px;
 }
 
-header > .header_logo > h1 {
+header > .header_logo > a >  h1 {
+
+    color: #000000;
     font-weight: normal;
-}
-
-.logo-topo{
-    padding: 20px;
+   
 }
 /* -------------------------------------------------------------------------- */
 
@@ -156,14 +163,10 @@ main > div > p{
     
 }
 
-
-
-
 /* -------------------------------------------------------------------------- */
 
 /*Rodapé*/
 
-/*Rodapé*/
 
 body > footer{
 
@@ -249,6 +252,24 @@ body > footer > div{
 
 .footer_logo > h1{
     font-weight: normal;
+}
+
+.footer_logo > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}  
+
+.footer_logo > a >  img {
+    float: left;
+    padding: 8px;
+}
+
+.footer_logo> a >  h1 {
+
+    color: #000000;
+    font-weight: normal;
+   
 }
 
 /* -------------------------------------------------------------------------- */

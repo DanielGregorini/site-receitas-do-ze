@@ -102,9 +102,6 @@ form > div> input {
 }
 /* -------------------------------------------------------------------------- */
 
-
-/* -------------------------------------------------------------------------- */
-
 /*Rodapé*/
 
 body > footer{
@@ -193,6 +190,20 @@ body > footer > div{
     font-weight: normal;
 }
 
-/* -------------------------------------------------------------------------- */
+.footer_logo > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}  
 
+.footer_logo > a >  img {
+    float: left;
+    padding: 8px;
+}
 
+.footer_logo> a >  h1 {
+
+    color: #000000;
+    font-weight: normal;
+   
+}

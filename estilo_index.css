@@ -7,12 +7,13 @@ header{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* Botão do meio de pesquisa */
 header > .header_pesquisa{
     text-align: center; 
-    padding: 30px; 
+    padding: 0px; 
 }
 
 header > .header_pesquisa > .search-bar {
@@ -23,6 +24,10 @@ header > .header_pesquisa > .search-bar {
       border-radius: 5px; /* Cantos arredondados */
       font-size: 16px; /* Tamanho da fonte */
       cursor: pointer; /* Cursor de mão ao passar o mouse */
+      border-radius: 5px; 
+
+
+
 
 }
 
@@ -34,21 +39,31 @@ header > .header_pesquisa > .confirm-button {
       border-radius: 5px; 
       font-size: 15px; 
 }
-/* -------------------------------------------------------------------------- */
+
 
 /* Logo no header */
 
 header > .header_logo{
-    display: flex;
-}   
+   
+} 
 
-header > div > img {
+header > .header_logo > a{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}  
+
+header > .header_logo > a >  img {
     float: left;
     padding: 8px;
 }
 
-header > .header_logo > h1 {
+header > .header_logo > a >  h1 {
+
+    color: #000000;
     font-weight: normal;
+   
 }
 
 /* -------------------------------------------------------------------------- */
@@ -63,7 +78,6 @@ header > .header_logo > h1 {
 .logo-topo{
     padding: 30px 20px;
 }
-
 
 
 
@@ -83,7 +97,6 @@ body{
 }
 
 /* -------------------------------------------------------------------------- */
-
 
 /* menu de categorias de comidas */
 
@@ -170,6 +183,7 @@ body > footer{
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
+
 }
 
 body > footer > div{
@@ -244,5 +258,24 @@ body > footer > div{
 .footer_logo > h1{
     font-weight: normal;
 }
+
+.footer_logo > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}  
+
+.footer_logo > a >  img {
+    float: left;
+    padding: 8px;
+}
+
+.footer_logo> a >  h1 {
+
+    color: #000000;
+    font-weight: normal;
+   
+}
+
 
 /* -------------------------------------------------------------------------- */

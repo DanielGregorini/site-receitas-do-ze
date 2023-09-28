@@ -7,6 +7,7 @@ header{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
 }
 
 /* Botão do meio de pesquisa */
@@ -321,7 +322,6 @@ main > .main_comentarios > div > p{
     text-align: justify;
 }
 
-
 /* -------------------------------------------------------------------------- */
 
 /*Rodapé*/
@@ -412,7 +412,21 @@ body > footer > div{
     font-weight: normal;
 }
 
+.footer_logo > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}  
 
-/* -------------------------------------------------------------------------- */
+.footer_logo > a >  img {
+    float: left;
+    padding: 8px;
+}
 
+.footer_logo> a >  h1 {
+
+    color: #000000;
+    font-weight: normal;
+   
+}
 
