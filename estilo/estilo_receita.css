@@ -1,0 +1,432 @@
+
+header{
+    background-color: #B19242;
+    margin: 0px;
+    border: 0px;
+    padding: 5px 0px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Botão do meio de pesquisa */
+header > .header_pesquisa{
+    text-align: center; 
+    padding: 30px; 
+}
+
+header > .header_pesquisa > .search-bar {
+      padding: 10px 20px; /* Espaçamento interno para o botão */
+      background-color: #fdfdfd; /* Cor de fundo do botão */
+      color: #080808; /* Cor do texto do botão */
+      border: none; /* Remover borda do botão */
+      border-radius: 5px; /* Cantos arredondados */
+      font-size: 16px; /* Tamanho da fonte */
+      cursor: pointer; /* Cursor de mão ao passar o mouse */
+
+}
+
+header > .header_pesquisa > .confirm-button {
+      text-align: center;
+      width: 80px; 
+      padding: 10px; 
+      border: 1px solid #000000; 
+      border-radius: 5px; 
+      font-size: 15px; 
+}
+/* -------------------------------------------------------------------------- */
+
+/* Logo no header */
+
+header > .header_logo{
+    display: flex;
+}   
+
+header > div > img {
+    float: left;
+    padding: 18px;
+}
+
+header > .header_logo > h1 {
+    font-weight: normal;
+}
+
+.logo-topo{
+    padding: 10px;
+}
+
+
+/* -------------------------------------------------------------------------- */
+
+
+/* Logo no header */
+
+header > .header_logo{
+    display: flex;
+}   
+
+header > div > img {
+    float: left;
+    padding: 18px;
+}
+
+header > .header_logo > h1 {
+    font-weight: normal;
+}
+
+.logo-topo{
+    padding: 20px;
+}
+/* -------------------------------------------------------------------------- */
+
+/* Fonte Padrao */
+
+body{
+    font-family: 'Roboto', sans-serif;  
+    background-color: #f6f6f6;
+
+    margin: 0;
+}
+
+.oleo-font {
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+/* -------------------------------------------------------------------------- */
+/* nome da receita e a foto */
+
+main > .main_nome_receita{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+main > .main_nome_receita > img{
+    width: 600px;
+    float:inline-start;
+    height:  350px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+main > .main_nome_receita > h1{
+
+    float: right;
+    margin-top: 40px;
+    margin-left: 80px;
+    font-size: 100px;
+   
+}
+/* -------------------------------------------------------------------------- */
+
+/* Descrição*/
+
+main > .main_descricao{
+    margin-top: 50px;
+    display: flex;
+    width: auto;
+    padding: 0px 150px 0px 150px;
+ 
+}
+
+main > .main_descricao > h1{
+    font-size: 50px;
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-weight: normal;
+}
+
+main > .main_descricao > p{
+    margin-left: 30px;
+    margin-top: 40px;
+    font-size: 24px;
+}
+/* -------------------------------------------------------------------------- */
+
+main > .main_nota {
+    text-align: right;
+    margin-right: 200px;
+}
+
+main > .main_nota > label {
+    font-size: 25px;
+}
+
+main > .main_nota > #rating {
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 10px;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/* lista de ingredientes e modo de preparo*/
+
+main > .main_ingredientes_modo{
+    margin-top: 50px;
+    width: 100%;
+    
+    display: flex;
+    justify-content: space-around;
+}
+
+main > .main_ingredientes_modo > .ingredientes{
+    margin-top: 50px;
+    width: 35%;
+    min-height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+main > .main_ingredientes_modo > .ingredientes > img{
+    margin-top: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+  
+}
+
+main > .main_ingredientes_modo > .ingredientes > h1{
+    
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 50px;
+    font-weight: normal;
+  
+    
+}
+
+
+main > .main_ingredientes_modo > .ingredientes > ul{
+   
+    float: inline-start;
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 150px;
+    list-style: none;
+}
+
+main > .main_ingredientes_modo > .ingredientes > ul > li{
+   
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+
+main > .main_ingredientes_modo > .modo_de_preparo{
+  
+    margin-top: 50px;
+    width: 35%;
+    min-height: 500px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    
+}
+
+main > .main_ingredientes_modo > .modo_de_preparo > img{
+  
+    margin-top: 35px;
+    margin-left: 10px;
+    margin-right: 10px;
+    float: left;
+    
+}
+
+
+main > .main_ingredientes_modo > .modo_de_preparo > h1{
+  
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 50px;
+    font-weight: normal;
+  
+    
+}
+
+main > .main_ingredientes_modo > .modo_de_preparo > ol{
+   
+    float: inline-start;
+    width: 100%;
+    margin-left: 50px;
+    margin-bottom: 150px;
+}
+
+main > .main_ingredientes_modo > .modo_de_preparo > ol > li{
+   
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+/* -------------------------------------------------------------------------- */
+main > .main_fotos {
+    margin-top: 50px;
+    text-align: center; /* Centralizar o conteúdo */
+    margin-bottom: 50px;
+}
+
+main > .main_fotos > h1 {
+    font-family: 'Oleo Script Swash Caps', cursive;
+    font-size: 80px; /* Reduzir o tamanho da fonte para dispositivos menores */
+    font-weight: normal;
+}
+
+main > .main_fotos > .receitas_fotos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centralizar as imagens horizontalmente */
+}
+
+main > .main_fotos > .receitas_fotos > img {
+    max-width: 100%; /* Permitir que as imagens se redimensionem de acordo com o tamanho da tela */
+    height: auto; /* Manter a proporção original da imagem */
+    margin: 10px; /* Adicionar um espaço entre as imagens */
+}
+/* -------------------------------------------------------------------------- */
+
+/*Comentários*/
+
+main > .main_comentarios{
+    
+    margin-bottom: 10%;
+
+}
+main > .main_comentarios > div{
+    
+    padding: 5% 7% 0 7%;
+
+}
+
+main > .main_comentarios > h1{
+    
+    padding: 0% 7% 0 7%;
+    font-size: 80px;
+    text-align: center;
+    font-weight: normal;
+    font-family: 'Oleo Script Swash Caps', cursive;
+}
+
+
+/*Nome do usuario que fez o comentário*/
+main > .main_comentarios > div > h1{
+    
+    font-size: 40px;
+}
+
+/*Conteúdo do comentário*/
+main > .main_comentarios > div > p{
+    
+    font-size: 20px;
+    padding: 0 4% 0 4%;
+    text-align: justify;
+}
+
+/* -------------------------------------------------------------------------- */
+
+/*Rodapé*/
+
+body > footer{
+
+    clear: both;
+    margin: 0;
+    background-color: #B19242;
+    padding: 80px 30px 30px 40px;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+body > footer > div{
+    margin: 5px;
+}
+
+.footer_redesocial{
+    display: flex;
+    padding: 10px;
+    flex-wrap: wrap;
+    flex: 1;
+    width: 33%;
+    align-items: center;
+    justify-content: space-around;
+   
+}
+
+.footer_redesocial > div{
+
+    padding: 10px;
+    justify-content: center; 
+    text-align: center;
+    width: auto;
+   
+}
+
+.footer_links{
+     /* Defina a altura desejada */
+    text-align: center;
+    display: flex;
+    padding: 5px;
+    margin: 20px;
+    flex: 1;
+    width: 25%;
+    justify-content: space-around;
+    text-align: center;
+    flex-wrap: wrap;
+}
+
+.footer_links > div{
+
+    padding: 10px;
+   
+    text-decoration: none;
+    align-items: center;
+}
+
+.footer_links > div > a{
+    text-decoration: none;
+    color: black;
+    font-size: 25px;
+    text-align: center;
+    flex: 1;
+    width: 20%;
+  
+}
+
+.footer_logo{
+    width: 20%;
+    display: flex;
+    padding: 10px;
+    flex: 1;
+    
+}
+
+.footer_logo > img{
+    padding: 18px;
+    font-weight: normal;
+
+}
+
+.footer_logo > h1{
+    font-weight: normal;
+}
+
+.footer_logo > a{
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}  
+
+.footer_logo > a >  img {
+    float: left;
+    padding: 8px;
+}
+
+.footer_logo> a >  h1 {
+
+    color: #000000;
+    font-weight: normal;
+   
+}
+
