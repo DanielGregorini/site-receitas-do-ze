@@ -19,7 +19,6 @@ app.get("/", async (req, res) => {
     return res.send("APLI na escuta!!");
 });
 
-app.use("/pessoa", require('./routes/pessoa'));
 app.use("/avaliacao", require('./routes/avaliacao'));
 app.use("/receita", require('./routes/receita'));
 app.use("/usuario", require('./routes/usuario'));
