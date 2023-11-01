@@ -3,13 +3,13 @@ const router = express.Router();
 const UsuarioRepository = require('../repository/usuario');
 
 // Obter todas as usuarios
-router.get("/usuario/", async (req, res) => {
+router.get("/", async (req, res) => {
     const usuarios = await UsuarioRepository.getAllUsuario();
     return res.json(usuarios);
 });
 
 // Obter por ID
-router.get("/usuario/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const usuario = await UsuarioRepository.getByIdUsuario(id);
 
@@ -21,23 +21,29 @@ router.get("/usuario/:id", async (req, res) => {
 });
 
 // Criar pessoa
-router.post("/usuario/", async(req, res) => {
+router.post("/", async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
-    const dbResult = await UsuarioRepository.create(req.body);
-  
-    // Verificando se alguma Usuario foi "afetada" na tabela
-    if(dbResult.affectedRows == 0) {
-      // Envia uma mensagem de código 400 (Bad Request)
-      return res.status(400).json({ message: "Falha ao inserir usuario"});
+    try {
+        const dbResult = await UsuarioRepository.create(req.body);
+
+        // Verificando se alguma Usuario foi "afetada" na tabela
+        if (dbResult.affectedRows == 0) {
+            // Envia uma mensagem de código 400 (Bad Request)
+            return res.status(400).json({ message: "Falha ao inserir usuario" });
+        }
+
+        req.body.id = dbResult.insertId;
+        return res.json(req.body);
+    } catch (err) {
+        return res.status(400).json({ message: "Falha ao inserir usuario", detail: err });
     }
-  
-    req.body.id = dbResult.insertId;
-    return res.json(req.body);
-  })
-  
+
+
+})
+
 // Atualizar pessoa
-router.put("/usuario/:id", async (req, res) => {
-    
+router.put("/:id", async (req, res) => {
+
     const { id } = req.params;
     const usuario = req.body;
     const usuarioDB = await UsuarioRepository.getByIdUsuario(id);
@@ -51,12 +57,13 @@ router.put("/usuario/:id", async (req, res) => {
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao atualizar usuario" });
     }
-
-    return res.json({ data: usuario});
+    
+    //usuario.id = id;
+    return res.json({id, ...usuario});
 });
 
 // Deletar pessoa
-router.delete("/usuario/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     const { id } = req.params;
     const usuarioDB = await UsuarioRepository.getByIdUsuario(id);
 

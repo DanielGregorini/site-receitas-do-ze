@@ -5,7 +5,7 @@ const TABLE = 'tb_usuario';
 const getAllUsuario = async () => {
 
     const [query] = await connection.execute(
-        `SELECT id, nome, email, data_de_nascimento, telefone FROM ${TABLE}`
+        `SELECT id, nome, email, nascimento, telefone FROM ${TABLE}`
     );
     return query;
 }
@@ -13,7 +13,7 @@ const getAllUsuario = async () => {
 //obter uma pessoa pelo id
 const getByIdUsuario = async (id) => {
     const [query] = await connection.execute(
-        `SELECT id, nome, email, data_de_nascimento, telefone FROM ${TABLE} WHERE  id = 
+        `SELECT id, nome, email, nascimento, telefone FROM ${TABLE} WHERE  id = 
         ${id} LIMIT 1`
     );
     return query;
@@ -40,13 +40,13 @@ const getLoginUsuario = async (usuario) => {
 
 
 //insert
-const createUsuario = async (usuario) => {
+const create = async (usuario) => {
     const [query] = await connection.execute(
-        `INSERT INTO ${TABLE} (nome, email, senha, data_de_nascimento, telefone) VALUES (
+        `INSERT INTO ${TABLE} (nome, email, senha, nascimento, telefone) VALUES (
             "${usuario.nome}", 
             "${usuario.email}", 
-            "${usuario.senha}"),
-            "${usuario.data_de_nascimento}",
+            "${usuario.senha}",
+            "${usuario.nascimento}",
             "${usuario.telefone}")`
     );
     return query;
@@ -55,8 +55,8 @@ const createUsuario = async (usuario) => {
 //atualizar
 const updateUsuario = async (id, usuario) => {
     const [query] = await connection.execute(
-        `UPDATE ${TABLE} SET nome = ?, email = ?, data = ? WHERE id = ?`,
-        [usuario.nome, usuario.email, usuario.data, id]
+        `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
+        [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
     );
     
     return query;
@@ -70,4 +70,4 @@ const removeUsuario = async (id) => {
     return query;
 }
  
-module.exports = {getAllUsuario, createUsuario, getByIdUsuario, updateUsuario, removeUsuario, getLoginUsuario}
+module.exports = {getAllUsuario, create, getByIdUsuario, updateUsuario, removeUsuario, getLoginUsuario}

@@ -1,0 +1,45 @@
+
+///rest client
+
+@URL=http://localhost:3005/usuario
+
+###Obter todoa as pessoas
+
+GET {{URL}}
+
+###
+
+GET {{URL}}/1
+
+GET {{URL}}/4
+
+###criar pessoa
+POST {{URL}}
+Content-Type: application/json
+
+{
+  "nome" : "juc amora",
+  "email" : "zegmail.com",
+  "senha" : "zGG",
+  "nascimento" : "2020-09-19",
+  "telefone" : "23232323"
+}
+
+
+
+###atualizar usuario
+PUT {{URL}}/2
+Content-Type: application/json
+
+{
+  "nome" : "ddd",
+  "email" : "Aze@gmail.com",
+  "senha" : "A",
+  "nascimento" : "2020-09-2",
+  "telefone" : "1"
+}
+
+
+### deletar pessoa
+
+DELETE {{URL}}/1

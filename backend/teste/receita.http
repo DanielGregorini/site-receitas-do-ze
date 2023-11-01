@@ -1,0 +1,44 @@
+
+///rest client
+
+@URL=http://localhost:3005/receita
+
+###Obter todoa as pessoas
+
+GET {{URL}}
+
+###
+
+GET {{URL}}/1
+
+GET {{URL}}/4
+
+###criar receita
+POST {{URL}}
+Content-Type: application/json
+
+{
+  "titulo" : "ddd",
+  "descricao" : "ddddddddddddddd",
+  "ingredientes" : "Ad;ddd;ddd;d",
+  "instrucoes" : "aa;aaa;aa;aa;",
+  "id_usuario" : 2,
+  "criacao" : "2020-10-12"
+}
+
+###atualizar receita
+PUT {{URL}}/1
+Content-Type: application/json
+
+{
+  "titulo" : "aFFF",
+  "descricao" : "dG",
+  "ingredientes" : "Ad;ddd;ddd;d",
+  "instrucoes" : "aaa;aa;",
+  "id_usuario" : 2
+}
+
+
+### deletar receita
+
+DELETE {{URL}}/1

@@ -5,7 +5,7 @@ const TABLE = 'tb_receita';
 const getAllReceita = async () => {
 
     const [query] = await connection.execute(
-        `SELECT id, titulo, descricao, ingredientes, intrucoes, id_do_autor, data_de_criacao FROM ${TABLE}`
+        `SELECT id, titulo, descricao, ingredientes, instrucoes, id_usuario, criacao FROM ${TABLE}`
     );
 
     return query;
@@ -14,21 +14,21 @@ const getAllReceita = async () => {
 //obter uma receita pelo id
 const getByIdReceita = async (id) => {
     const [query] = await connection.execute(
-        `SELECT id, titulo, descricao, ingredientes, intrucoes, id_do_autor, data_de_criacao FROM ${TABLE} WHERE id = ${id} LIMIT 1`
+        `SELECT id, titulo, descricao, ingredientes, instrucoes, id_usuario, criacao FROM ${TABLE} WHERE id = ${id} LIMIT 1`
     );
     return query;
 }
 
 //insert
-const createReceita = async (receita) => {
+const create = async (receita) => {
     const [query] = await connection.execute(
-        `INSERT INTO ${TABLE} (id, titulo, descricao, ingredientes, intrucoes, id_do_autor, data_de_criacao) VALUES (
-        "${receita.id}", 
+        `INSERT INTO ${TABLE} (titulo, descricao, ingredientes, instrucoes, id_usuario, criacao) VALUES (
         "${receita.titulo}", 
         "${receita.descricao}", 
-        "${receita.ingredentes}", 
-        "${receita.id_do_autor}", 
-        "${receita.data_de_criacao}")`
+        "${receita.ingredientes}", 
+        "${receita.instrucoes}", 
+        "${receita.id_usuario}", 
+        "${receita.criacao}")`
     );
     return query;
 }
@@ -37,13 +37,12 @@ const createReceita = async (receita) => {
 const updateReceita = async (id, receita) => {
     const [query] = await connection.execute(
         `UPDATE ${TABLE} set
-        "${receita.id}", 
-        "${receita.titulo}", 
-        "${receita.descricao}", 
-        "${receita.ingredentes}", 
-        "${receita.id_do_autor}", 
-        "${receita.data_de_criacao}", 
-        "WHERE id = ${id}"`
+        titulo = "${receita.titulo}", 
+        descricao = "${receita.descricao}", 
+        ingredientes ="${receita.ingredientes}", 
+        instrucoes ="${receita.instrucoes}", 
+        id_usuario = ${receita.id_usuario}
+        WHERE id = ${id}`
     );
     
     return query;
@@ -57,4 +56,4 @@ const removeReceita = async (id) => {
     return query;
 }
  
-module.exports = {getAllReceita, createReceita, getByIdReceita, updateReceita, removeReceita}
+module.exports = {getAllReceita, create, getByIdReceita, updateReceita, removeReceita}

@@ -3,13 +3,13 @@ const router = express.Router();
 const ReceitaRepository = require('../repository/receita');
 
 // Obter todas as receitas
-router.get("/receita/", async (req, res) => {
+router.get("/", async (req, res) => {
     const receitas = await ReceitaRepository.getAllReceita();
     return res.json(receitas);
 });
 
 // Obter por ID
-router.get("/receita/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
 
     const id = req.params.id;
     const usuario = await ReceitaRepository.getByIdReceita(id);
@@ -22,7 +22,7 @@ router.get("/receita/:id", async (req, res) => {
 });
 
 // Criar receita
-router.post("/receita/", async(req, res) => {
+router.post("/", async(req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await ReceitaRepository.create(req.body);
   
@@ -39,29 +39,30 @@ router.post("/receita/", async(req, res) => {
   
 
 // Atualizar receita
-router.put("/receita/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     
     const { id } = req.params;
     const receita = req.body;
 
-    const receitaDB = await UsuarioRepository.getByIdUsuario(id);
+    const receitaDB = await ReceitaRepository.getByIdReceita(id);
 
     if (receitaDB.length === 0) {
-        return res.status(404).json({ error: "Usuario não encontrada" });
+        return res.status(404).json({ error: "receita não encontrada" });
     }
 
-    const dbResult = await UsuarioRepository.updateUsuario(id, usuario);
+    const dbResult = await ReceitaRepository.updateReceita(id, receita);
 
     if (dbResult.affectedRows === 0) {
-        return res.status(400).json({ error: "Falha ao atualizar usuario" });
+        return res.status(400).json({ error: "Falha ao atualizar receita" });
     }
-
-    return res.json({ data: receita});
+    
+    receita.criacao = receitaDB[0].criacao;
+    return res.json({id,...receita});
 
 });
 
 // Deletar receita
-router.delete("/receita/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
 
     const { id } = req.params;
     const receitaDB = await ReceitaRepository.getByIdReceita(id);
