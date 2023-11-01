@@ -1,8 +1,8 @@
 const connection = require('../connection');
 const TABLE = 'tb_usuario';
 
-//consultar os usuarios no banco de dados tabela pessoa
-const getAllUsuario = async () => {
+//obter todos os usuarios
+const getAll = async () => {
 
     const [query] = await connection.execute(
         `SELECT id, nome, email, nascimento, telefone FROM ${TABLE}`
@@ -10,8 +10,8 @@ const getAllUsuario = async () => {
     return query;
 }
 
-//obter uma pessoa pelo id
-const getByIdUsuario = async (id) => {
+//obter um usuario pelo id
+const getById = async (id) => {
     const [query] = await connection.execute(
         `SELECT id, nome, email, nascimento, telefone FROM ${TABLE} WHERE  id = 
         ${id} LIMIT 1`
@@ -20,7 +20,7 @@ const getByIdUsuario = async (id) => {
 }
 
 //obter uma login
-const getLoginUsuario = async (usuario) => {
+const getLogin = async (usuario) => {
     try {
       const [rows] = await connection.execute(
         `SELECT id, nome, email FROM ${TABLE} WHERE email = ? AND senha = ? LIMIT 1`,
@@ -53,7 +53,7 @@ const create = async (usuario) => {
 }
 
 //atualizar
-const updateUsuario = async (id, usuario) => {
+const update = async (id, usuario) => {
     const [query] = await connection.execute(
         `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
         [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
@@ -63,11 +63,11 @@ const updateUsuario = async (id, usuario) => {
 }
 
 //deletar um usuario do banco de dados
-const removeUsuario = async (id) => {
+const remove = async (id) => {
     const [query] = await connection.execute(
         `DELETE FROM ${TABLE} WHERE id=${id}`
     );
     return query;
 }
  
-module.exports = {getAllUsuario, create, getByIdUsuario, updateUsuario, removeUsuario, getLoginUsuario}
+module.exports = {getAll, create, getById, update, remove, getLogin}

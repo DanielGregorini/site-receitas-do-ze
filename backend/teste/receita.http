@@ -1,7 +1,7 @@
 
 ///rest client
 
-@URL=http://localhost:3005/receita
+@URL=http://localhost:3006/receita
 
 ###Obter todoa as pessoas
 
@@ -27,7 +27,7 @@ Content-Type: application/json
 }
 
 ###atualizar receita
-PUT {{URL}}/1
+PUT {{URL}}/2
 Content-Type: application/json
 
 {

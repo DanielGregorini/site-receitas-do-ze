@@ -4,14 +4,14 @@ const UsuarioRepository = require('../repository/usuario');
 
 // Obter todas as usuarios
 router.get("/", async (req, res) => {
-    const usuarios = await UsuarioRepository.getAllUsuario();
+    const usuarios = await UsuarioRepository.getAll();
     return res.json(usuarios);
 });
 
 // Obter por ID
 router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    const usuario = await UsuarioRepository.getByIdUsuario(id);
+    const usuario = await UsuarioRepository.getById(id);
 
     if (usuario.length === 0) {
         return res.status(404).json({ error: "Usuario não encontrado" });
@@ -46,13 +46,13 @@ router.put("/:id", async (req, res) => {
 
     const { id } = req.params;
     const usuario = req.body;
-    const usuarioDB = await UsuarioRepository.getByIdUsuario(id);
+    const usuarioDB = await UsuarioRepository.getById(id);
 
     if (usuarioDB.length === 0) {
         return res.status(404).json({ error: "Usuario não encontrada" });
     }
 
-    const dbResult = await UsuarioRepository.updateUsuario(id, usuario);
+    const dbResult = await UsuarioRepository.update(id, usuario);
 
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao atualizar usuario" });
@@ -65,13 +65,13 @@ router.put("/:id", async (req, res) => {
 // Deletar pessoa
 router.delete("/:id", async (req, res) => {
     const { id } = req.params;
-    const usuarioDB = await UsuarioRepository.getByIdUsuario(id);
+    const usuarioDB = await UsuarioRepository.getById(id);
 
     if (usuarioDB.length === 0) {
         return res.status(404).json({ error: "usuario não encontrada" });
     }
 
-    const dbResult = await UsuarioRepository.removeUsuario(id);
+    const dbResult = await UsuarioRepository.remove(id);
 
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao deletar usuario" });

@@ -2,7 +2,7 @@ const connection = require('../connection');
 const TABLE = 'tb_receita';
 
 //consultar as receitas no banco de dados tabela receitas
-const getAllReceita = async () => {
+const getAll = async () => {
 
     const [query] = await connection.execute(
         `SELECT id, titulo, descricao, ingredientes, instrucoes, id_usuario, criacao FROM ${TABLE}`
@@ -12,14 +12,14 @@ const getAllReceita = async () => {
 }
 
 //obter uma receita pelo id
-const getByIdReceita = async (id) => {
+const getById = async (id) => {
     const [query] = await connection.execute(
         `SELECT id, titulo, descricao, ingredientes, instrucoes, id_usuario, criacao FROM ${TABLE} WHERE id = ${id} LIMIT 1`
     );
     return query;
 }
 
-//insert
+//inserir uma receita
 const create = async (receita) => {
     const [query] = await connection.execute(
         `INSERT INTO ${TABLE} (titulo, descricao, ingredientes, instrucoes, id_usuario, criacao) VALUES (
@@ -33,8 +33,8 @@ const create = async (receita) => {
     return query;
 }
 
-//atualizar
-const updateReceita = async (id, receita) => {
+//atualizar uma receita pelo id
+const update = async (id, receita) => {
     const [query] = await connection.execute(
         `UPDATE ${TABLE} set
         titulo = "${receita.titulo}", 
@@ -48,12 +48,12 @@ const updateReceita = async (id, receita) => {
     return query;
 }
 
-//deletar umas receita do banco de dados
-const removeReceita = async (id) => {
+//deletar uma receita
+const remove = async (id) => {
     const [query] = await connection.execute(
         `DELETE FROM ${TABLE} WHERE id=${id}`
     );
     return query;
 }
  
-module.exports = {getAllReceita, create, getByIdReceita, updateReceita, removeReceita}
+module.exports = {getAll, create, getById, update, remove}

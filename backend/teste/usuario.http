@@ -1,7 +1,7 @@
 
 ///rest client
 
-@URL=http://localhost:3005/usuario
+@URL=http://localhost:3006/usuario
 
 ###Obter todoa as pessoas
 

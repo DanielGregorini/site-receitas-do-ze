@@ -6,13 +6,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = 3005;
+const PORT = 3006;
 
 app.listen(PORT, () => {
+    console.log(`-- BACKEND do projeto receitas do zé --`);
     console.log(`App executando na porta ${PORT}`);
-    console.log(`BACKEND do projeto receitas-do-zé`);
     
-
 });
 
 app.get("/", async (req, res) => {

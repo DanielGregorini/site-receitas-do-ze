@@ -4,15 +4,17 @@ const ReceitaRepository = require('../repository/receita');
 
 // Obter todas as receitas
 router.get("/", async (req, res) => {
-    const receitas = await ReceitaRepository.getAllReceita();
+
+    const receitas = await ReceitaRepository.getAll();
     return res.json(receitas);
+    
 });
 
-// Obter por ID
+// Obter por ID um receita
 router.get("/:id", async (req, res) => {
 
     const id = req.params.id;
-    const usuario = await ReceitaRepository.getByIdReceita(id);
+    const usuario = await ReceitaRepository.getById(id);
 
     if (usuario.length === 0) {
         return res.status(404).json({ error: "Receita não encontrado" });
@@ -22,42 +24,41 @@ router.get("/:id", async (req, res) => {
 });
 
 // Criar receita
-router.post("/", async(req, res) => {
+router.post("/", async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await ReceitaRepository.create(req.body);
-  
-  
+
     // Verificando se alguma Receita foi "afetada" na tabela
-    if(dbResult.affectedRows == 0) {
-      // Envia uma mensagem de código 400 (Bad Request)
-      return res.status(400).json({ message: "Falha ao inserir receita"});
+    if (dbResult.affectedRows == 0) {
+        // Envia uma mensagem de código 400 (Bad Request)
+        return res.status(400).json({ message: "Falha ao inserir receita" });
     }
-  
+
     req.body.id = dbResult.insertId;
     return res.json(req.body);
-  })
-  
+})
+
 
 // Atualizar receita
 router.put("/:id", async (req, res) => {
-    
+
     const { id } = req.params;
     const receita = req.body;
 
-    const receitaDB = await ReceitaRepository.getByIdReceita(id);
+    const receitaDB = await ReceitaRepository.getById(id);
 
     if (receitaDB.length === 0) {
         return res.status(404).json({ error: "receita não encontrada" });
     }
 
-    const dbResult = await ReceitaRepository.updateReceita(id, receita);
+    const dbResult = await ReceitaRepository.update(id, receita);
 
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao atualizar receita" });
     }
-    
+
     receita.criacao = receitaDB[0].criacao;
-    return res.json({id,...receita});
+    return res.json({ id, ...receita });
 
 });
 
@@ -65,13 +66,13 @@ router.put("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 
     const { id } = req.params;
-    const receitaDB = await ReceitaRepository.getByIdReceita(id);
+    const receitaDB = await ReceitaRepository.getById(id);
 
     if (receitaDB.length === 0) {
         return res.status(404).json({ error: "Receita não encontrada" });
     }
 
-    const dbResult = await ReceitaRepository.removeReceita(id);
+    const dbResult = await ReceitaRepository.remove(id);
 
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao deletar receita" });

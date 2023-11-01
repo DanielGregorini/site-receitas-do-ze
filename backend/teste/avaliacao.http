@@ -1,0 +1,42 @@
+
+///rest client
+
+@URL=http://localhost:3006/avaliacao
+
+###Obter todoa as avaliacao
+
+GET {{URL}}
+
+###
+
+GET {{URL}}/1
+
+GET {{URL}}/4
+
+###criar avaliacao
+POST {{URL}}
+Content-Type: application/json
+
+{
+  "receita_id" : 2,
+  "usuario_id" : 9,
+  "classificacao" : 4,
+  "comentario" : "amora amora",
+  "data_avaliacao" : "2020-09-19"
+}
+
+
+###atualizar avaliacao
+PUT {{URL}}/5
+Content-Type: application/json
+
+{
+  "receita_id" : 3,
+  "usuario_id" : 9,
+  "classificacao" : 3,
+  "comentario" : "amoradddd amora"
+}
+
+
+### deletar avaliacao
+DELETE {{URL}}/6

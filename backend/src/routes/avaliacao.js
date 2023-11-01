@@ -3,15 +3,15 @@ const router = express.Router();
 const AvaliacaoRepository = require('../repository/avaliacao');
 
 // Obter todas as avaliacoes
-router.get("/avaliacao/", async (req, res) => {
-    const avaliacoes = await avaliacaoRepository.getAllAvaliacao();
+router.get("/", async (req, res) => {
+    const avaliacoes = await AvaliacaoRepository.getAll();
     return res.json(avaliacoes);
 });
 
 // Obter por ID
-router.get("/avaliacao/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
     const id = req.params.id;
-    const avaliacao = await AvaliacaoRepository.getByIdAvaliacao(id);
+    const avaliacao = await AvaliacaoRepository.getById(id);
 
     if (avaliacao.length === 0) {
         return res.status(404).json({ error: "Avaliação não encontrado" });
@@ -21,7 +21,7 @@ router.get("/avaliacao/:id", async (req, res) => {
 });
 
 // Criar pessoa
-router.post("/avaliacao/", async(req, res) => {
+router.post("/", async(req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await AvaliacaoRepository.create(req.body);
   
@@ -36,17 +36,17 @@ router.post("/avaliacao/", async(req, res) => {
   })
   
 // Atualizar pessoa
-router.put("/avaliacao/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
     
     const { id } = req.params;
     const avaliacao = req.body;
-    const avaliacaoDB = await AvaliacaoRepository.getByIdAvaliacao(id);
+    const avaliacaoDB = await AvaliacaoRepository.getById(id);
 
     if (avaliacaoDB.length === 0) {
         return res.status(404).json({ error: "Avaliacao não encontrada" });
     }
 
-    const dbResult = await AvaliacaoRepository.updateAvaliacao(id, avaliacao);
+    const dbResult = await AvaliacaoRepository.update(id, avaliacao);
 
     if (dbResult.affectedRows === 0) {
         return res.status(400).json({ error: "Falha ao atualizar avaliação" });
@@ -56,21 +56,21 @@ router.put("/avaliacao/:id", async (req, res) => {
 });
 
 // Deletar pessoa
-router.delete("/avaliacao/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
     const { id } = req.params;
-    const avaliacaoDB = await AvaliacaoRepository.getByIdAvaliacao(id);
+    const avaliacaoDB = await AvaliacaoRepository.getById(id);
 
     if (avaliacaoDB.length === 0) {
         return res.status(404).json({ error: "avaliação não encontrada" });
     }
 
-    const dbResult = await usuarioRepository.removeUsuario(id);
+    const dbResult = await AvaliacaoRepository.remove(id);
 
     if (dbResult.affectedRows === 0) {
-        return res.status(400).json({ error: "Falha ao deletar usuario" });
+        return res.status(400).json({ error: "Falha ao deletar avaliação" });
     }
 
-    return res.json({ message: "avaliacao deletado" });
+    return res.json({ message: "avaliacao deletada" });
 });
 
 module.exports = router;
