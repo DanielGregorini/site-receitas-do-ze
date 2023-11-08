@@ -2,19 +2,22 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NDQ1NzE3LCJleHAiOjE2OTk0NDkzMTd9.SjF85DxnlOnCJH8HOV3yQQ426lOyyuFt8mGnaurEq8o
 
 ###Obter todoa as pessoas
 
 GET {{URL}}
 
+
 ###
 
-GET {{URL}}/1
+GET {{URL}}/2
 
 GET {{URL}}/4
 
 ###criar receita
 POST {{URL}}
+Authorization: {{TOKEN}}
 Content-Type: application/json
 
 {
@@ -25,6 +28,7 @@ Content-Type: application/json
   "id_usuario" : 2,
   "criacao" : "2020-10-12"
 }
+
 
 ###atualizar receita
 PUT {{URL}}/2
@@ -40,5 +44,5 @@ Content-Type: application/json
 
 
 ### deletar receita
-
-DELETE {{URL}}/1
+DELETE {{URL}}/2
+Authorization:{{TOKEN}}

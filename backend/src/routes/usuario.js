@@ -1,15 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const UsuarioRepository = require('../repository/usuario');
+const isAuthorized = require('../middleware/isAuthorized');
 
 // Obter todas as usuarios
-router.get("/", async (req, res) => {
+router.get("/", isAuthorized, async (req, res) => {
     const usuarios = await UsuarioRepository.getAll();
     return res.json(usuarios);
 });
 
 // Obter por ID
-router.get("/:id", async (req, res) => {
+router.get("/:id",isAuthorized, async (req, res) => {
     const id = req.params.id;
     const usuario = await UsuarioRepository.getById(id);
 
@@ -20,7 +21,7 @@ router.get("/:id", async (req, res) => {
     return res.json(usuario[0]);
 });
 
-// Criar pessoa
+// Criar usuario
 router.post("/", async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     try {
@@ -42,7 +43,7 @@ router.post("/", async (req, res) => {
 })
 
 // Atualizar pessoa
-router.put("/:id", async (req, res) => {
+router.put("/:id", isAuthorized, async (req, res) => {
 
     const { id } = req.params;
     const usuario = req.body;
@@ -63,7 +64,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Deletar pessoa
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", isAuthorized, async (req, res) => {
     const { id } = req.params;
     const usuarioDB = await UsuarioRepository.getById(id);
 

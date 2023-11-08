@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const ReceitaRepository = require('../repository/receita');
+const isAuthorized = require('../middleware/isAuthorized');
 
 // Obter todas as receitas
 router.get("/", async (req, res) => {
@@ -24,7 +25,7 @@ router.get("/:id", async (req, res) => {
 });
 
 // Criar receita
-router.post("/", async (req, res) => {
+router.post("/", isAuthorized, async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await ReceitaRepository.create(req.body);
 
@@ -38,9 +39,8 @@ router.post("/", async (req, res) => {
     return res.json(req.body);
 })
 
-
 // Atualizar receita
-router.put("/:id", async (req, res) => {
+router.put("/:id", isAuthorized, async (req, res) => {
 
     const { id } = req.params;
     const receita = req.body;
@@ -63,7 +63,7 @@ router.put("/:id", async (req, res) => {
 });
 
 // Deletar receita
-router.delete("/:id", async (req, res) => {
+router.delete("/:id", isAuthorized, async (req, res) => {
 
     const { id } = req.params;
     const receitaDB = await ReceitaRepository.getById(id);

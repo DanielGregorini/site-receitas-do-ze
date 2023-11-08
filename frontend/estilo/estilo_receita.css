@@ -13,7 +13,7 @@ header{
 /* Botão do meio de pesquisa */
 header > .header_pesquisa{
     text-align: center; 
-    padding: 30px; 
+    padding: 0px; 
 }
 
 header > .header_pesquisa > .search-bar {
@@ -24,6 +24,10 @@ header > .header_pesquisa > .search-bar {
       border-radius: 5px; /* Cantos arredondados */
       font-size: 16px; /* Tamanho da fonte */
       cursor: pointer; /* Cursor de mão ao passar o mouse */
+      border-radius: 5px; 
+
+
+
 
 }
 
@@ -35,48 +39,31 @@ header > .header_pesquisa > .confirm-button {
       border-radius: 5px; 
       font-size: 15px; 
 }
-/* -------------------------------------------------------------------------- */
-
-/* Logo no header */
-
-header > .header_logo{
-    display: flex;
-}   
-
-header > div > img {
-    float: left;
-    padding: 18px;
-}
-
-header > .header_logo > h1 {
-    font-weight: normal;
-}
-
-.logo-topo{
-    padding: 10px;
-}
-
-
-/* -------------------------------------------------------------------------- */
 
 
 /* Logo no header */
 
 header > .header_logo{
+   
+} 
+
+header > .header_logo > a{
     display: flex;
-}   
+    align-items: center;
+    justify-content: space-between;
+    text-decoration: none;
+}  
 
-header > div > img {
+header > .header_logo > a >  img {
     float: left;
-    padding: 18px;
+    padding: 8px;
 }
 
-header > .header_logo > h1 {
+header > .header_logo > a >  h1 {
+
+    color: #000000;
     font-weight: normal;
-}
-
-.logo-topo{
-    padding: 20px;
+   
 }
 /* -------------------------------------------------------------------------- */
 
@@ -286,6 +273,46 @@ main > .main_fotos > .receitas_fotos > img {
 /* -------------------------------------------------------------------------- */
 
 /*Comentários*/
+
+main > section > .comentario_pessoal{
+   
+}
+
+main > section > .comentario_pessoal > form{
+ 
+}
+
+main > section > .comentario_pessoal > form > label{
+ 
+    padding: 5px;
+    text-align: center;
+    font-size: 30px;
+    display: block;
+}
+
+main > section > .comentario_pessoal > form > textarea{
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    display: block;
+    width: 90%;
+    height: 150px;
+    font-size: 20px;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 10px;
+}
+
+main > section > .comentario_pessoal > form > input{
+    text-align: center;
+    display: block;
+    margin: 10px auto 10px auto;
+    padding: 10px 20px;
+    border: 2px solid black;
+    border-radius: 10px;
+    font-size: 20px;
+    background-color: #B19242;
+
+}
 
 main > .main_comentarios{
     

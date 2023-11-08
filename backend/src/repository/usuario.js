@@ -19,6 +19,17 @@ const getById = async (id) => {
     return query;
 }
 
+const getByEmailAndPassoword = async (email, password) => {
+
+    const [rows] = await connection.execute(
+        `SELECT id, nome, email, senha FROM ${TABLE} WHERE email = ? AND senha = ? LIMIT 1`,
+        [email, password]
+      );
+
+    return rows;
+}
+
+
 //obter uma login
 const getLogin = async (usuario) => {
     try {
@@ -70,4 +81,4 @@ const remove = async (id) => {
     return query;
 }
  
-module.exports = {getAll, create, getById, update, remove, getLogin}
+module.exports = {getAll, create, getById, update, remove, getLogin, getByEmailAndPassoword}

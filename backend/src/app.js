@@ -1,6 +1,7 @@
 //importacoes
 const express = require("express");
 const cors = require('cors');
+const { getLogin } = require("./repository/usuario");
 
 const app = express();
 app.use(cors());
@@ -18,6 +19,7 @@ app.get("/", async (req, res) => {
     return res.send("APLI na escuta!!");
 });
 
+app.use("/login", require('./routes/login'));
 app.use("/avaliacao", require('./routes/avaliacao'));
 app.use("/receita", require('./routes/receita'));
-app.use("/usuario", require('./routes/usuario'));
+app.use("/usuario", require('./routes/usuario')); 

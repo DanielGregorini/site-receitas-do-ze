@@ -3,24 +3,28 @@
 
 @URL=http://localhost:3006/usuario
 
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NDQ1NzE3LCJleHAiOjE2OTk0NDkzMTd9.SjF85DxnlOnCJH8HOV3yQQ426lOyyuFt8mGnaurEq8o
 ###Obter todoa as pessoas
 
 GET {{URL}}
-
+Authorization:{{TOKEN}}
 ###
 
 GET {{URL}}/1
-
-GET {{URL}}/4
+Authorization:{{TOKEN}}
+###
+GET {{URL}}/7
+Authorization:{{TOKEN}}
 
 ###criar pessoa
 POST {{URL}}
 Content-Type: application/json
 
+Authorization:{{TOKEN}}
 {
   "nome" : "juc amora",
-  "email" : "zegmail.com",
-  "senha" : "zGG",
+  "email" : "z@gmail.com",
+  "senha" : "123456",
   "nascimento" : "2020-09-19",
   "telefone" : "23232323"
 }

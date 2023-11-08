@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const AvaliacaoRepository = require('../repository/avaliacao');
+const isAuthorized = require('../middleware/isAuthorized');
 
 // Obter todas as avaliacoes
 router.get("/", async (req, res) => {
@@ -20,8 +21,8 @@ router.get("/:id", async (req, res) => {
     return res.json(avaliacao[0]);
 });
 
-// Criar pessoa
-router.post("/", async(req, res) => {
+// Criar avaliaca
+router.post("/", isAuthorized, async(req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await AvaliacaoRepository.create(req.body);
   
@@ -35,8 +36,8 @@ router.post("/", async(req, res) => {
     return res.json(req.body);
   })
   
-// Atualizar pessoa
-router.put("/:id", async (req, res) => {
+// Atualizar avaliacao
+router.put("/:id", isAuthorized, async (req, res) => {
     
     const { id } = req.params;
     const avaliacao = req.body;
@@ -55,8 +56,8 @@ router.put("/:id", async (req, res) => {
     return res.json({ data: avaliacao});
 });
 
-// Deletar pessoa
-router.delete("/:id", async (req, res) => {
+// Deletar avalicao
+router.delete("/:id", isAuthorized, async (req, res) => {
     const { id } = req.params;
     const avaliacaoDB = await AvaliacaoRepository.getById(id);
 
