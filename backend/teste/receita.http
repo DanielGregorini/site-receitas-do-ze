@@ -2,7 +2,7 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NDQ1NzE3LCJleHAiOjE2OTk0NDkzMTd9.SjF85DxnlOnCJH8HOV3yQQ426lOyyuFt8mGnaurEq8o
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NTUxMjg0LCJleHAiOjE2OTk1NTQ4ODR9._P25tZ5w5qFcwoVDEjPwnqhbBOXepnzKk7l0JsSpJQY
 
 ###Obter todoa as pessoas
 
