@@ -24,6 +24,7 @@ router.get("/:id",isAuthorized, async (req, res) => {
 // Criar usuario
 router.post("/", async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
+    console.log(req.body);
     try {
         const dbResult = await UsuarioRepository.create(req.body);
 
