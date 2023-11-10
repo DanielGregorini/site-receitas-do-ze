@@ -13,7 +13,6 @@ body{
 
 /* -------------------------------------------------------------------------- */
 
-
 .header_logo_login{
     display: flex;
     font-size: 30px;
@@ -32,7 +31,6 @@ body{
 
 
 form {
-    
     margin-left: 200px;
     margin-right: 200px;
     margin-bottom: 200px;
@@ -48,8 +46,6 @@ form {
         margin-left: 50px;
         margin-right: 50px;
     }
-
-    
 }
 
 form >  p {
@@ -63,7 +59,6 @@ form > div > p {
     margin: 20px 80px 20px 80px;
     font-size: 18px;
     font-weight: bold;
-    
     text-align: justify;
 }
 
@@ -76,18 +71,14 @@ form > div {
 }
 
 form > a{
-
-
     text-align: center;
     margin-left: 45px;
     padding: 10px;
     display: inline-block;
- 
     font-weight: bold;
     color: rgb(0, 0, 0);
     text-decoration: none;
     font-size: 22px;
-
 }
 
 .form_label{
@@ -96,13 +87,10 @@ form > a{
     padding: 10px;
 }
 
-
-
 .form_input{
     margin-bottom: 20px;  
     border-radius: 8px;
 }
-
 
 .form_cadastrar{
     border-radius: 10px;
@@ -122,8 +110,7 @@ input:hover{
     background-color: #dddddd;
 }
 
-.form_senha{
-    
+.form_senha{ 
     font-weight: bold;
 }
 
@@ -141,8 +128,6 @@ form > div > input {
     font-size: 20px;
     padding: 10px;
 }
-/* -------------------------------------------------------------------------- */
-
 
 /* -------------------------------------------------------------------------- */
 
@@ -173,7 +158,6 @@ body > footer > div{
     width: 33%;
     align-items: center;
     justify-content: space-around;
-   
 }
 
 .footer_redesocial > div{
@@ -182,7 +166,6 @@ body > footer > div{
     justify-content: center; 
     text-align: center;
     width: auto;
-   
 }
 
 .footer_links{
@@ -199,9 +182,7 @@ body > footer > div{
 }
 
 .footer_links > div{
-
     padding: 10px;
-   
     text-decoration: none;
     align-items: center;
 }
@@ -213,7 +194,6 @@ body > footer > div{
     text-align: center;
     flex: 1;
     width: 20%;
-  
 }
 
 .footer_logo{
@@ -221,13 +201,11 @@ body > footer > div{
     display: flex;
     padding: 10px;
     flex: 1;
-    
 }
 
 .footer_logo > img{
     padding: 18px;
     font-weight: normal;
-
 }
 
 .footer_logo > h1{
@@ -246,8 +224,6 @@ body > footer > div{
 }
 
 .footer_logo> a >  h1 {
-
     color: #000000;
     font-weight: normal;
-   
 }

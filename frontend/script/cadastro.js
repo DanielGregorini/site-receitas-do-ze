@@ -47,7 +47,22 @@ function CadastrarUsuario() {
     .then(usuario => {
         console.log(usuario);
         alert("Usuário cadastrado com sucesso!");
+        /*
+        var formCadastro = document.getElementById('form_cadastro');
+         //Remove todos os elementos filhos do formulário
+        while (formCadastro.firstChild) {
+        formCadastro.removeChild(formCadastro.firstChild);
+        }       
+        var novaDiv = document.createElement('div');
+        novaDiv.className = 'div_center';
+        novaDiv.textContent = 'Bem-Vindo ao site';
+        Adiciona a nova div ao formulário
+         formCadastro.appendChild(novaDiv);
+         */
         LimparDados()
+        setTimeout(function() {
+            window.location.href = "login.html";
+        }, 500); // 2000 milissegundos (2 segundos)
     })
     .catch(err => {
         console.error(err);

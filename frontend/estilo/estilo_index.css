@@ -25,10 +25,6 @@ header > .header_pesquisa > .search-bar {
       font-size: 16px; /* Tamanho da fonte */
       cursor: pointer; /* Cursor de mão ao passar o mouse */
       border-radius: 5px; 
-
-
-
-
 }
 
 header > .header_pesquisa > .confirm-button {
@@ -150,14 +146,12 @@ main{
 main > h1{
     text-align: center;
     font-size: 50px;
-
 }
 
 main > .lista_receitas{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    
 }
 
 main > .lista_receitas > a > img{
@@ -183,7 +177,6 @@ body > footer{
     flex-direction: row;
     justify-content: space-around;
     flex-wrap: wrap;
-
 }
 
 body > footer > div{
@@ -198,16 +191,13 @@ body > footer > div{
     width: 33%;
     align-items: center;
     justify-content: space-around;
-   
 }
 
 .footer_redesocial > div{
-
     padding: 10px;
     justify-content: center; 
     text-align: center;
     width: auto;
-   
 }
 
 .footer_links{
@@ -224,9 +214,7 @@ body > footer > div{
 }
 
 .footer_links > div{
-
     padding: 10px;
-   
     text-decoration: none;
     align-items: center;
 }
@@ -238,7 +226,6 @@ body > footer > div{
     text-align: center;
     flex: 1;
     width: 20%;
-  
 }
 
 .footer_logo{
@@ -246,13 +233,11 @@ body > footer > div{
     display: flex;
     padding: 10px;
     flex: 1;
-    
 }
 
 .footer_logo > img{
     padding: 18px;
     font-weight: normal;
-
 }
 
 .footer_logo > h1{
@@ -271,12 +256,9 @@ body > footer > div{
 }
 
 .footer_logo> a >  h1 {
-
     color: #000000;
     font-weight: normal;
-   
 }
-
 
 /* -------------------------------------------------------------------------- */
 

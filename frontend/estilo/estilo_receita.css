@@ -25,10 +25,6 @@ header > .header_pesquisa > .search-bar {
       font-size: 16px; /* Tamanho da fonte */
       cursor: pointer; /* Cursor de mão ao passar o mouse */
       border-radius: 5px; 
-
-
-
-
 }
 
 header > .header_pesquisa > .confirm-button {
@@ -99,12 +95,10 @@ main > .main_nome_receita > img{
 }
 
 main > .main_nome_receita > h1{
-
     float: right;
     margin-top: 40px;
     margin-left: 80px;
     font-size: 100px;
-   
 }
 /* -------------------------------------------------------------------------- */
 
@@ -115,7 +109,6 @@ main > .main_descricao{
     display: flex;
     width: auto;
     padding: 0px 150px 0px 150px;
- 
 }
 
 main > .main_descricao > h1{
@@ -152,8 +145,7 @@ main > .main_nota > #rating {
 
 main > .main_ingredientes_modo{
     margin-top: 50px;
-    width: 100%;
-    
+    width: 100%;  
     display: flex;
     justify-content: space-around;
 }
@@ -172,21 +164,15 @@ main > .main_ingredientes_modo > .ingredientes > img{
     margin-left: 10px;
     margin-right: 10px;
     float: left;
-  
 }
 
-main > .main_ingredientes_modo > .ingredientes > h1{
-    
+main > .main_ingredientes_modo > .ingredientes > h1{ 
     font-family: 'Oleo Script Swash Caps', cursive;
     font-size: 50px;
-    font-weight: normal;
-  
-    
+    font-weight: normal;  
 }
 
-
-main > .main_ingredientes_modo > .ingredientes > ul{
-   
+main > .main_ingredientes_modo > .ingredientes > ul{  
     float: inline-start;
     width: 100%;
     margin-left: 50px;
@@ -195,7 +181,6 @@ main > .main_ingredientes_modo > .ingredientes > ul{
 }
 
 main > .main_ingredientes_modo > .ingredientes > ul > li{
-   
     font-size: 20px;
     margin-bottom: 8px;
 }
@@ -203,37 +188,28 @@ main > .main_ingredientes_modo > .ingredientes > ul > li{
 /* -------------------------------------------------------------------------- */
 
 main > .main_ingredientes_modo > .modo_de_preparo{
-  
     margin-top: 50px;
     width: 35%;
     min-height: 500px;
     display: flex;
     justify-content: flex-start;
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;  
 }
 
 main > .main_ingredientes_modo > .modo_de_preparo > img{
-  
     margin-top: 35px;
     margin-left: 10px;
     margin-right: 10px;
-    float: left;
-    
+    float: left; 
 }
 
-
 main > .main_ingredientes_modo > .modo_de_preparo > h1{
-  
     font-family: 'Oleo Script Swash Caps', cursive;
     font-size: 50px;
     font-weight: normal;
-  
-    
 }
 
-main > .main_ingredientes_modo > .modo_de_preparo > ol{
-   
+main > .main_ingredientes_modo > .modo_de_preparo > ol{ 
     float: inline-start;
     width: 100%;
     margin-left: 50px;
@@ -241,7 +217,6 @@ main > .main_ingredientes_modo > .modo_de_preparo > ol{
 }
 
 main > .main_ingredientes_modo > .modo_de_preparo > ol > li{
-   
     font-size: 20px;
     margin-bottom: 8px;
 }
@@ -311,13 +286,10 @@ main > section > .comentario_pessoal > form > input{
     border-radius: 10px;
     font-size: 20px;
     background-color: #B19242;
-
 }
 
 main > .main_comentarios{
-    
     margin-bottom: 10%;
-
 }
 main > .main_comentarios > div{
     
@@ -333,7 +305,6 @@ main > .main_comentarios > h1{
     font-weight: normal;
     font-family: 'Oleo Script Swash Caps', cursive;
 }
-
 
 /*Nome do usuario que fez o comentário*/
 main > .main_comentarios > div > h1{
@@ -378,7 +349,6 @@ body > footer > div{
     width: 33%;
     align-items: center;
     justify-content: space-around;
-   
 }
 
 .footer_redesocial > div{
@@ -387,7 +357,6 @@ body > footer > div{
     justify-content: center; 
     text-align: center;
     width: auto;
-   
 }
 
 .footer_links{
@@ -418,21 +387,18 @@ body > footer > div{
     text-align: center;
     flex: 1;
     width: 20%;
-  
 }
 
 .footer_logo{
     width: 20%;
     display: flex;
     padding: 10px;
-    flex: 1;
-    
+    flex: 1;  
 }
 
 .footer_logo > img{
     padding: 18px;
     font-weight: normal;
-
 }
 
 .footer_logo > h1{
@@ -454,6 +420,4 @@ body > footer > div{
 
     color: #000000;
     font-weight: normal;
-   
 }
-

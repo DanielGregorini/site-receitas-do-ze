@@ -11,8 +11,6 @@ header{
 
 /* Botão do meio de pesquisa */
 
-
-
 header > .header_pesquisa > .confirm-button {
       text-align: center;
       width: 80px; 
@@ -74,7 +72,6 @@ body{
     border-radius: 10px;
     background-color: #dadada;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 .pesquisa:hover{
@@ -97,8 +94,6 @@ body{
 .pesquisa > .search-bar:hover{
     font-size: 18px;
     background-color: #eeeeee;
-    
-
 }
 
 
@@ -116,7 +111,6 @@ body{
 
 main{
     margin: 50px 20px;
-
     min-height: 500px;
 }
 
@@ -125,13 +119,11 @@ main > div {
     padding: 10px;
     background-color: #dddddd;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    
 }
 
 main > div:hover {
     top:-2px;
     box-shadow:0 2px 2px #1100ff
-    
 }
 
 /*se quiser adicionar imagem junto no nome da receita*/
@@ -167,9 +159,7 @@ main > div > p{
 
 /*Rodapé*/
 
-
 body > footer{
-
     clear: both;
     margin: 0;
     background-color: #B19242;
@@ -193,7 +183,6 @@ body > footer > div{
     width: 33%;
     align-items: center;
     justify-content: space-around;
-   
 }
 
 .footer_redesocial > div{
@@ -202,7 +191,6 @@ body > footer > div{
     justify-content: center; 
     text-align: center;
     width: auto;
-   
 }
 
 .footer_links{
@@ -233,7 +221,6 @@ body > footer > div{
     text-align: center;
     flex: 1;
     width: 20%;
-  
 }
 
 .footer_logo{
@@ -241,13 +228,11 @@ body > footer > div{
     display: flex;
     padding: 10px;
     flex: 1;
-    
 }
 
 .footer_logo > img{
     padding: 18px;
     font-weight: normal;
-
 }
 
 .footer_logo > h1{
@@ -271,7 +256,3 @@ body > footer > div{
     font-weight: normal;
    
 }
-
-/* -------------------------------------------------------------------------- */
-
-

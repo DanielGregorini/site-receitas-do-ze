@@ -1,11 +1,4 @@
 
-
-/* Estilos para telas grandes */
-
-
-
-
-
 /* Fonte Padrao */
 
 body{
@@ -19,7 +12,6 @@ body{
 }
 
 /* -------------------------------------------------------------------------- */
-
 
 .header_logo_login{
     display: flex;
@@ -37,6 +29,7 @@ body{
 }
 
 form {
+    height: auto;
     margin-left: 30%;
     margin-right: 30%;
     margin-bottom: 200px;
@@ -47,9 +40,17 @@ form {
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
+/*estilo para telas menores*/
+
+@media only screen and (max-width: 1000px) {
+    form {
+        margin-left: 5%;
+        margin-right: 5%;
+        margin-bottom: 100px;
+    }
+}
+
 form > a{
-   
-   
     text-align: center;
     margin-left: 45px;
     padding: 10px;
@@ -61,26 +62,22 @@ form > a{
 
 }
 
-
 .form_label{
 
     font-size: 20px;
     padding: 10px;
-    
 }
 
-
 .form_email{
-    width: 20%;
+    width: 30%;
     margin-bottom: 20px;  
     border-radius: 8px;
 }
 
 .form_senha{
-    width: 20%;
+    width: 30%;
     border-radius: 8px;
 }
-
 
 .form_entrar{
     font-size: 20px;
@@ -93,7 +90,6 @@ form > a{
     background-color: red;
 }
 
-
 form:hover{
     top:-2px;
     box-shadow:0 2px 2px #666
@@ -103,9 +99,10 @@ input:hover{
     background-color: #b4b4b4;
 }
 
-
 form > div> input {
-    padding: 10px 60px 10px 60px;
+    
+    
+    padding: 10px 10px 10px 10px;
 }
 /* -------------------------------------------------------------------------- */
 
@@ -136,8 +133,6 @@ body > footer > div{
     width: 33%;
     align-items: center;
     justify-content: space-around;
-    
-   
 }
 
 .footer_redesocial > div{
@@ -146,7 +141,6 @@ body > footer > div{
     justify-content: center; 
     text-align: center;
     width: auto;
-   
 }
 
 .footer_links{
@@ -215,18 +209,3 @@ body > footer > div{
     font-weight: normal;
    
 }
-
-@media screen and (max-width: 768px) {
-    form {
-        margin: 0 10% 50px 10%; /* Aumenta a margem esquerda e direita para 20% em telas médias */
-    }
-
-    .form_label{
-
-        font-size: 20px;
-        padding: 5px;
-        
-    }
-}
-
-/* Estilos para telas grandes */
