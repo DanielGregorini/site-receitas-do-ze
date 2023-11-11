@@ -2,7 +2,7 @@
 ///rest client
 
 @URL=http://localhost:3006/avaliacao
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NDQ1NzE3LCJleHAiOjE2OTk0NDkzMTd9.SjF85DxnlOnCJH8HOV3yQQ426lOyyuFt8mGnaurEq8o
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NzM0NTMyLCJleHAiOjE2OTk3MzgxMzJ9.-62GeC6OsDel2rbjxtuZxJQf9o67Cr4p9ZvLWTwGeEo
 
 ###Obter todoa as avaliacao
 
@@ -21,7 +21,7 @@ Content-Type: application/json
 
 {
   "receita_id" : 3,
-  "usuario_id" : 9,
+  "usuario_id" : 46,
   "classificacao" : 4,
   "comentario" : "amora amora",
   "data_avaliacao" : "2020-09-19"

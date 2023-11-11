@@ -11,6 +11,8 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
 
+    <script src="script/receita.js"></script>
+
 </head>
 
 <body>
@@ -39,7 +41,7 @@
 
             <img src="imagens/hamburger.png" alt="foto da receita " width="600" height="350">
 
-            <h1>Hambúrger</h1>
+            <h1 id="nome_receita">TITULO</h1>
 
         </div>
 
@@ -49,24 +51,12 @@
 
         <div class="main_descricao">
             <h1>Descrição:</h1>
-            <p class="p_descricao">
-                O hambúrguer (do inglês hamburger), também conhecido como hamburgo, hamburguesa ou sanduíche de carne, é
-                um preparado de carne temperada (principalmente de carne bovina, ocasionalmente de frango moído, carne
-                suína moída ou com misturas de carnes) e moldada em formato circular.
+            <p class="p_descricao" id="descricao_receita">
+                DESCRICAO
             </p>
         </div>
 
-        <div class="main_nota">
-            <label for="rating">Avaliação:</label>
-
-            <select id="rating" name="rating">
-                <option value="1">1 - Péssimo</option>
-                <option value="2">2 - Ruim </option>
-                <option value="3">3 - Médio</option>
-                <option value="4">4 - Bom</option>
-                <option value="5">5 - Muito Bom</option>
-            </select>
-        </div>
+        
 
         <div class="main_ingredientes_modo">
 
@@ -75,40 +65,22 @@
                 <img src="imagens/ingredientes.png" alt="ingredientes" width="48" height="48">
                 <h1>Ingredientes</h1>
 
-                <ul class="lista_ingredientes">
-                    <li>Item 1</li>
-                    <li>Item 2</li>
-                    <li>Item 3</li>
-                    <li>Item 4</li>
-                    <li>Item 5</li>
-                    <li>Item 6</li>
-                    <li>Item 7</li>
-                    <li>Item 8</li>
-                    <li>Item 9</li>
+                <ul class="lista_ingredientes" id="ingredientes_receita">
 
+                    <li>Item 1</li>
+    
                 </ul>
             </div>
 
-            <div class="modo_de_preparo">
+            <div class="modo_de_preparo" id="modo_de_preparo_receita">
 
                 <img src="imagens/modo_de_prepraro.png" alt="ingredientes" width="48" height="48">
                 <h1>Modo de Preparo</h1>
 
-                <ol class="lista_modo_de_preparo">
+                <ol class="lista_modo_de_preparo" id="lista_instrucoes">
+
                     <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
-                    <li>Cozinha</li>
+                    
                 </ol>
             </div>
 
@@ -130,7 +102,7 @@
 
         <hr>
 
-        <section class="main_comentarios">
+        <section class="main_comentarios" id="comentarios_usuarios">
 
             <h1>Comentários:</h1>
 
@@ -138,35 +110,33 @@
                 <form action="" method="">
                     <label for="comentario" class="oleo-font">Seu comentário:</label><br>
                     <textarea id="comentario" name="comentario" rows="4" cols="50" required></textarea>
-                
+                    <div class="main_nota">
+                        <label for="rating">Avaliação:</label>
+            
+                        <select id="rating" name="rating">
+                            <option value="1">1 - Péssimo</option>
+                            <option value="2">2 - Ruim </option>
+                            <option value="3">3 - Médio</option>
+                            <option value="4">4 - Bom</option>
+                            <option value="5">5 - Muito Bom</option>
+                        </select>
+                    </div>
                     <input type="submit" value="Enviar Comentário" id="enviar_comentario">
                 </form>
             </div>
 
 
-            <div>
+            <!-- <div>
                 <h1>João</h1>
 
                 <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Asperiores quis
                     reiciendis quae aliquam, minima assumenda voluptas sapiente ducimus, perspiciatis facere eligendi
                     soluta. Nemo itaque odio pariatur iste libero, cumque ipsum?</p>
 
-            </div>
+            </div> -->
             
 
-            <div>
-                <h1>Pedro</h1>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta, saepe ipsam? Ducimus asperiores similique quam consectetur quae. Nemo dolorem dolor nam corrupti beatae est, architecto reiciendis quaerat officia unde quis eaque suscipit deserunt commodi assumenda, placeat alias vitae porro tempore iste! Accusamus dolor repellat cumque deserunt placeat tempora eos, excepturi officiis possimus labore ullam officia perspiciatis unde nulla ut consequuntur similique! Aperiam commodi ipsum ut, explicabo quis corrupti maiores id tempore repellendus dolor deserunt at minima doloribus? Modi doloribus obcaecati ipsa reprehenderit! Aut cumque consectetur ad placeat consequatur quibusdam facilis praesentium, vel ab enim, ut vero? Ipsa a ex earum.</p>
-
-            </div>
-
-            <div>
-                <h1>Zé</h1>
-
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum, nulla delectus. Vel illum dignissimos recusandae accusamus a, quod quidem nihil non sit. Illo corrupti cum aliquam veritatis ex earum placeat.</p>
-
-            </div>
+            
 
         </section>
 
