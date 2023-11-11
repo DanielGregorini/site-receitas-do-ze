@@ -36,8 +36,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-
-
     function FiltrarEOrdenarReceitas(receitas, filtro){
         
         console.log(receitas);
@@ -53,7 +51,5 @@ document.addEventListener('DOMContentLoaded', function() {
         );
         receitas = receitasFiltradas
         exibirReceitas(receitas);
-
     }
-
 });

@@ -11,6 +11,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Oleo+Script+Swash+Caps&display=swap" rel="stylesheet">
+    <script src="script/login.js"></script>
 
 </head>
 <body>
@@ -23,15 +24,15 @@
     <form action="" method="">
 
         <div>
-            <label for="email" class="form_label">E-mail:</label>
-            <input type="email" id="email" name="email" required class="form_email"> 
+            <label class="form_label">E-mail:</label>
+            <input type="email" id="login" name="email" required class="form_email"> 
             <br>
         
-            <label for="senha" class="form_label">Senha:</label>
+            <label class="form_label">Senha:</label>
             <input type="password" id="senha" name="senha" required class="form_senha">
             <br>
         
-            <input type="submit" value="Entrar" class="form_entrar">
+            <input type="button" value="Entrar" onclick="LoginUsuario()" class="form_entrar">
         </div>
         <br>
         <a href="cadastro.html">Ainda não possui uma conta?</a>

@@ -99,6 +99,9 @@ form > a{
     margin-left: 55px;
     color: #ffffff;
     background-color: red;
+    text-align: center;
+    font-size: 20px;
+    padding: 10px;
 }
 
 form:hover{
@@ -123,11 +126,13 @@ form > div > input {
     padding: 10px 40px 10px 10px;
 }
 
-.form_cadastrar{
-    text-align: center;
+form > div > button{
+    border-radius: 8px;
+    padding: 10px 20px 10px 20px;
     font-size: 20px;
-    padding: 10px;
+
 }
+
 
 /* -------------------------------------------------------------------------- */
 
