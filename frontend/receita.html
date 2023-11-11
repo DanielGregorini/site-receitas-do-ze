@@ -56,8 +56,6 @@
             </p>
         </div>
 
-        
-
         <div class="main_ingredientes_modo">
 
             <div class="ingredientes">
@@ -113,7 +111,7 @@
                     <div class="main_nota">
                         <label for="rating">Avaliação:</label>
             
-                        <select id="rating" name="rating">
+                        <select id="rating_receita" name="rating">
                             <option value="1">1 - Péssimo</option>
                             <option value="2">2 - Ruim </option>
                             <option value="3">3 - Médio</option>
@@ -121,11 +119,11 @@
                             <option value="5">5 - Muito Bom</option>
                         </select>
                     </div>
-                    <input type="submit" value="Enviar Comentário" id="enviar_comentario">
+                    <input type="button" value="Enviar Comentário" onclick="CadastrarAvaliacao()" id="enviar_comentario">
                 </form>
             </div>
 
-
+            <!-- assim que uma avaliacao vai ser feita   -->
             <!-- <div>
                 <h1>João</h1>
 
@@ -134,10 +132,7 @@
                     soluta. Nemo itaque odio pariatur iste libero, cumque ipsum?</p>
 
             </div> -->
-            
-
-            
-
+        
         </section>
 
     </main>

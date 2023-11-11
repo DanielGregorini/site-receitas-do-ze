@@ -17,7 +17,6 @@ router.get("/:id", async (req, res) => {
     const id = req.params.id;
     const usuario = await ReceitaRepository.getById(id);
     
-
     if (usuario.length === 0) {
         return res.status(404).json({ error: "Receita não encontrado" });
     }

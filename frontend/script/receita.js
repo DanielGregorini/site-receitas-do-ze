@@ -100,28 +100,93 @@ function FiltrarAvaliacoes(avaliacoes, idReceita) {
     MostrarAvaliacoes(avaliacoesFiltradas);
 }
 
-function MostrarAvaliacoes (avalicoes){
-    
+function MostrarAvaliacoes(avalicoes) {
+
     mainAvaliacoes = document.getElementById('comentarios_usuarios');
-    
+    const token = localStorage.getItem('token');
+
     avalicoes.forEach(avaliacao => {
-        //crias os elementos para inserir no html
+        // Cria os elementos para inserir no HTML
         const div = document.createElement('div');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
-        
-        //inseri o comentario e o id do usuario que fez o comentario
+
+        // Realiza a chamada AJAX de forma síncrona para obter o nome do usuário
+        const result = fetch(`http://localhost:3006/usuario/` + avaliacao.usuario_id, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': token
+            },
+        })
+            .then(response => response.json())
+            .then(usuario => {
+                //o titulo do comentario
+                h1.textContent = usuario.nome; // Adiciona o nome do usuário ao h1
+            })
+            .catch(error => {
+                console.error('Erro ao pegar o nome do usuário:', error);
+            });
+
         p.textContent = avaliacao.comentario;
-        h1.textContent = avaliacao.usuario_id;
-    
+
         div.appendChild(h1);
         div.appendChild(p);
-       
+
         mainAvaliacoes.appendChild(div);
-       
     });
-    
 }
+
+//Funcoes de insercao de comentario da receita //
+
+function CadastrarAvaliacao() {
+    
+    const comentario = document.getElementById('comentario').value;
+    const rating = document.getElementById('rating_receita').value;
+    const token = localStorage.getItem('token');
+    const autorId = localStorage.getItem('id');
+
+    const palavras = comentario.split(/\s+/).length; // Conta o número de palavras
+
+    if (palavras < 5) {
+        alert('O comentário deve ter pelo menos 5 palavras.');
+        return;
+    } 
+    //id da receita
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const receitaId = urlParams.get('id');
+
+    const url = 'http://localhost:3006/avaliacao';
+   
+    const dados = {
+        receita_id: parseInt(receitaId),
+        usuario_id: parseInt(autorId),
+        classificacao: parseInt(rating),
+        comentario: comentario,
+        data_avaliacao: new Date().toISOString().split('T')[0] // Obtém a data atual no formato 'YYYY-MM-DD'
+    };
+
+    fetch(url, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': token
+        },
+        body: JSON.stringify(dados)
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Avaliação cadastrada com sucesso:', data);
+        window.location.reload();
+        // Faça algo após cadastrar a avaliação, se necessário
+    })
+    .catch(error => {
+        console.error('Erro ao cadastrar avaliação:', error);
+        // Faça algo em caso de erro
+    });
+}
+
 
 //inicia o processor de inserir os dados da receita na pagina
 ObterEExibirReceita();
