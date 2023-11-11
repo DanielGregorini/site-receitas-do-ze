@@ -2,13 +2,11 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NTUxMjg0LCJleHAiOjE2OTk1NTQ4ODR9._P25tZ5w5qFcwoVDEjPwnqhbBOXepnzKk7l0JsSpJQY
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NzAyODIxLCJleHAiOjE2OTk3MDY0MjF9.x8K_Y6DsSk2GCG_YW-Vwf0J2BlhG3ZPxnenbgmPa00Y
 
 ###Obter todoa as pessoas
 
 GET {{URL}}
-
-
 ###
 
 GET {{URL}}/2
@@ -21,14 +19,13 @@ Authorization: {{TOKEN}}
 Content-Type: application/json
 
 {
-  "titulo" : "ddd",
+  "titulo" : "abacaxi",
   "descricao" : "ddddddddddddddd",
-  "ingredientes" : "Ad;ddd;ddd;d",
+  "ingredientes" : "nao;ddd;ddd;d",
   "instrucoes" : "aa;aaa;aa;aa;",
   "id_usuario" : 2,
   "criacao" : "2020-10-12"
 }
-
 
 ###atualizar receita
 PUT {{URL}}/2

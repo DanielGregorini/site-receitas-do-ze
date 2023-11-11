@@ -16,6 +16,7 @@ router.get("/:id", async (req, res) => {
 
     const id = req.params.id;
     const usuario = await ReceitaRepository.getById(id);
+    
 
     if (usuario.length === 0) {
         return res.status(404).json({ error: "Receita não encontrado" });
@@ -28,7 +29,7 @@ router.get("/:id", async (req, res) => {
 router.post("/", isAuthorized, async (req, res) => {
     // Executa a inserção na tabela de pessoa no DB
     const dbResult = await ReceitaRepository.create(req.body);
-
+    console.log(req.body)
     // Verificando se alguma Receita foi "afetada" na tabela
     if (dbResult.affectedRows == 0) {
         // Envia uma mensagem de código 400 (Bad Request)

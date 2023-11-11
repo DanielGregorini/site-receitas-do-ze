@@ -2,12 +2,13 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.getElementById('botao_confirmar').addEventListener('click', async () => {
         const termoPesquisa = document.getElementById('input_buscar').value;
-        
         const response = await fetch(`http://localhost:3006/receita/`);
         
         if (response.ok) {
             const receitas = await response.json();
-            exibirReceitas(receitas);
+            FiltrarEOrdenarReceitas(receitas, termoPesquisa)
+
+            //exibirReceitas(receitas);
         } else {
             console.error('Erro ao buscar receitas');
         }
@@ -34,4 +35,25 @@ document.addEventListener('DOMContentLoaded', function() {
             mainElement.appendChild(divReceita);
         });
     }
+
+
+
+    function FiltrarEOrdenarReceitas(receitas, filtro){
+        
+        console.log(receitas);
+        console.log(filtro);
+
+        let receitasFiltradas = receitas.filter(receita =>
+
+            receita.titulo.includes(filtro) ||
+            receita.descricao.includes(filtro) ||
+            receita.ingredientes.includes(filtro) ||
+            receita.instrucoes.includes(filtro)
+
+        );
+        receitas = receitasFiltradas
+        exibirReceitas(receitas);
+
+    }
+
 });
