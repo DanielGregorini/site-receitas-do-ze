@@ -29,7 +29,7 @@ function MostrarReceita(receita) {
     //adiciona o titulo na pagina
     const tituloReceita = document.getElementById('nome_receita');
     tituloReceita.textContent = receita.titulo;
-   
+
     //adiciona a descrecao na pagina
     const descricaReceita = document.getElementById('descricao_receita');
     descricaReceita.textContent = receita.descricao;
@@ -44,37 +44,35 @@ function MostrarReceita(receita) {
     // Adicione cada ingrediente à lista
     ingredientes.forEach(ingrediente => {
         const li = document.createElement('li');
-        li.textContent = ingrediente; 
+        li.textContent = ingrediente;
         ingredientesReceita.appendChild(li);
     });
 
     const instrucoesReceita = document.getElementById('lista_instrucoes')
-    
+
     //apaga qualquer elemento dentro da lista
-    
+
     //tranforma as intrucoes em um vetor separado por ;
     const instrucoes = receita.instrucoes.split(';');
 
     //caso o ultimo seja nao tenha nada apaga
-    if(instrucoes[instrucoes.length - 1] == ''){
+    if (instrucoes[instrucoes.length - 1] == '') {
         instrucoes.pop();
     }
-    
+
     //remove tudo dentro das instrucoesReceita no html
     instrucoesReceita.innerHTML = '';
-    
+
     instrucoes.forEach(instrucao => {
         const li = document.createElement('li');
-        li.textContent = instrucao.trim(); 
+        li.textContent = instrucao.trim();
         instrucoesReceita.appendChild(li);
     });
 
-    
 }
 
-async function CarregarAvaliacoes(idReceita){
+async function CarregarAvaliacoes(idReceita) {
 
-    //alert("edddsdfsdf")
     try {
         const response = await fetch(`http://localhost:3006/avaliacao/`);
 
@@ -98,6 +96,33 @@ function FiltrarAvaliacoes(avaliacoes, idReceita) {
     );
 
     MostrarAvaliacoes(avaliacoesFiltradas);
+    GerarNotaReceita(avaliacoesFiltradas);
+}
+
+function GerarNotaReceita(avaliacoes){
+    
+    let notaMedia = 0;
+    //se nao tiver nem uma valicao
+    if(avaliacoes == null || avaliacoes.length == 0){
+        const avaliacaoReceita = document.getElementById('avaliacaoReceita');
+        avaliacaoReceita.innerHTML = '';
+       
+        avaliacaoReceita.innerHTML = "Sem nota";
+        return;
+    }
+    
+    avaliacoes.forEach(avaliacao => {
+        if(avaliacao.classificacao != null){
+            notaMedia = notaMedia + avaliacao.classificacao;
+        } 
+    });
+
+    notaMedia = notaMedia / avaliacoes.length;
+    notaMedia = notaMedia.toFixed(2);
+
+    const avaliacaoReceita = document.getElementById('avaliacaoReceita');
+    avaliacaoReceita.innerHTML = '';
+    avaliacaoReceita.innerHTML = "Nota: " + notaMedia+"/5";
 }
 
 function MostrarAvaliacoes(avalicoes) {
@@ -110,6 +135,7 @@ function MostrarAvaliacoes(avalicoes) {
         const div = document.createElement('div');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
+        const pAvalicao = document.createElement('p');
 
         // Realiza a chamada AJAX de forma síncrona para obter o nome do usuário
         const result = fetch(`http://localhost:3006/usuario/` + avaliacao.usuario_id, {
@@ -129,9 +155,11 @@ function MostrarAvaliacoes(avalicoes) {
             });
 
         p.textContent = avaliacao.comentario;
+        pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
 
         div.appendChild(h1);
         div.appendChild(p);
+        div.appendChild(pAvalicao);
 
         mainAvaliacoes.appendChild(div);
     });
@@ -140,7 +168,7 @@ function MostrarAvaliacoes(avalicoes) {
 //Funcoes de insercao de comentario da receita //
 
 function CadastrarAvaliacao() {
-    
+
     const comentario = document.getElementById('comentario').value;
     const rating = document.getElementById('rating_receita').value;
     const token = localStorage.getItem('token');
@@ -151,14 +179,14 @@ function CadastrarAvaliacao() {
     if (palavras < 5) {
         alert('O comentário deve ter pelo menos 5 palavras.');
         return;
-    } 
+    }
     //id da receita
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const receitaId = urlParams.get('id');
 
     const url = 'http://localhost:3006/avaliacao';
-   
+
     const dados = {
         receita_id: parseInt(receitaId),
         usuario_id: parseInt(autorId),
@@ -175,18 +203,17 @@ function CadastrarAvaliacao() {
         },
         body: JSON.stringify(dados)
     })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Avaliação cadastrada com sucesso:', data);
-        window.location.reload();
-        // Faça algo após cadastrar a avaliação, se necessário
-    })
-    .catch(error => {
-        console.error('Erro ao cadastrar avaliação:', error);
-        // Faça algo em caso de erro
-    });
+        .then(response => response.json())
+        .then(data => {
+            console.log('Avaliação cadastrada com sucesso:', data);
+            window.location.reload();
+            // Faça algo após cadastrar a avaliação, se necessário
+        })
+        .catch(error => {
+            console.error('Erro ao cadastrar avaliação:', error);
+            // Faça algo em caso de erro
+        });
 }
-
 
 //inicia o processor de inserir os dados da receita na pagina
 ObterEExibirReceita();

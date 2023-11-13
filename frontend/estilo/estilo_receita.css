@@ -124,20 +124,16 @@ main > .main_descricao > p{
 }
 /* -------------------------------------------------------------------------- */
 
-main > .main_nota {
+main > .main_avaliacao {
     text-align: right;
     margin-right: 200px;
 }
 
-main > .main_nota > label {
-    font-size: 25px;
+main > .main_avaliacao > div {
+    font-size: 45px;
 }
 
-main > .main_nota > #rating {
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 10px;
-}
+
 
 /* -------------------------------------------------------------------------- */
 
