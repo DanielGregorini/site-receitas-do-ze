@@ -9,6 +9,13 @@ const getAll = async () => {
     );
     return query;
 }
+const getByIdName = async (id) => {
+    const [query] = await connection.execute(
+        `SELECT id, nome FROM ${TABLE} WHERE  id = 
+        ${id} LIMIT 1`
+    );
+    return query;
+}
 
 //obter um usuario pelo id
 const getById = async (id) => {
@@ -81,4 +88,4 @@ const remove = async (id) => {
     return query;
 }
  
-module.exports = {getAll, create, getById, update, remove, getLogin, getByEmailAndPassoword}
+module.exports = {getAll, create, getById, update, remove, getLogin, getByEmailAndPassoword, getByIdName}

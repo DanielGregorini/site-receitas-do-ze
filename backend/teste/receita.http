@@ -2,7 +2,7 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NzAyODIxLCJleHAiOjE2OTk3MDY0MjF9.x8K_Y6DsSk2GCG_YW-Vwf0J2BlhG3ZPxnenbgmPa00Y
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5ODk1ODkxLCJleHAiOjE2OTk4OTk0OTF9.8LITvU3-icngH8VcbicXSDS8HbHsx_OuSHInZgJ6MVM
 
 ###Obter todoa as pessoas
 
@@ -19,10 +19,10 @@ Authorization: {{TOKEN}}
 Content-Type: application/json
 
 {
-  "titulo" : "abacaxi",
-  "descricao" : "ddddddddddddddd",
-  "ingredientes" : "nao;ddd;ddd;d",
-  "instrucoes" : "aa;aaa;aa;aa;",
+  "titulo" : "Bolo de felicidade",
+  "descricao" : "felicidade é tao feliz que morreu",
+  "ingredientes" : "Daniel;taraxa;Vitor;laerte",
+  "instrucoes" : "Mate o laerte ;Vitor é espertinho; Fl ;nao me mata vitor;",
   "id_usuario" : 2,
   "criacao" : "2020-10-12"
 }

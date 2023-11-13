@@ -1,12 +1,15 @@
 
 async function ObterEExibirReceita() {
 
+    //consulta a id da receita que está no link html
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
     const receitaId = urlParams.get('id');
 
     console.log('ID da Receita:', receitaId);
 
+    //usa protocolo http para se conectar ao backend 
+    //e requisita a receita com o determinado ip
     try {
         const response = await fetch(`http://localhost:3006/receita/` + receitaId);
 
@@ -21,6 +24,7 @@ async function ObterEExibirReceita() {
     }
 }
 
+//funcao que altera o html para mostrar a informações da receita na pagina
 function MostrarReceita(receita) {
 
     //carrega os comentarios da pagina
@@ -41,7 +45,7 @@ function MostrarReceita(receita) {
     //apaga qualquer elemento dentro da lista
     ingredientesReceita.innerHTML = '';
 
-    // Adicione cada ingrediente à lista
+    // Adicione cada ingrediente à lista no html
     ingredientes.forEach(ingrediente => {
         const li = document.createElement('li');
         li.textContent = ingrediente;
@@ -63,6 +67,7 @@ function MostrarReceita(receita) {
     //remove tudo dentro das instrucoesReceita no html
     instrucoesReceita.innerHTML = '';
 
+    //Adiciona cada instrucao à lista no html
     instrucoes.forEach(instrucao => {
         const li = document.createElement('li');
         li.textContent = instrucao.trim();
@@ -71,8 +76,12 @@ function MostrarReceita(receita) {
 
 }
 
+///////--Funções das avaliações--////////
+
+//carrega todas as avaliações
 async function CarregarAvaliacoes(idReceita) {
 
+    //usa protocolo http para consultar todas as receitas e filtras as suas avaliações
     try {
         const response = await fetch(`http://localhost:3006/avaliacao/`);
 
@@ -95,26 +104,28 @@ function FiltrarAvaliacoes(avaliacoes, idReceita) {
         avaliacao.receita_id == idReceita
     );
 
+
     MostrarAvaliacoes(avaliacoesFiltradas);
     GerarNotaReceita(avaliacoesFiltradas);
 }
 
-function GerarNotaReceita(avaliacoes){
-    
+//calcula a media das notas dadas nas avaliações
+function GerarNotaReceita(avaliacoes) {
+
     let notaMedia = 0;
     //se nao tiver nem uma valicao
-    if(avaliacoes == null || avaliacoes.length == 0){
+    if (avaliacoes == null || avaliacoes.length == 0) {
         const avaliacaoReceita = document.getElementById('avaliacaoReceita');
         avaliacaoReceita.innerHTML = '';
-       
+
         avaliacaoReceita.innerHTML = "Sem nota";
         return;
     }
-    
+
     avaliacoes.forEach(avaliacao => {
-        if(avaliacao.classificacao != null){
+        if (avaliacao.classificacao != null) {
             notaMedia = notaMedia + avaliacao.classificacao;
-        } 
+        }
     });
 
     notaMedia = notaMedia / avaliacoes.length;
@@ -122,7 +133,7 @@ function GerarNotaReceita(avaliacoes){
 
     const avaliacaoReceita = document.getElementById('avaliacaoReceita');
     avaliacaoReceita.innerHTML = '';
-    avaliacaoReceita.innerHTML = "Nota: " + notaMedia+"/5";
+    avaliacaoReceita.innerHTML = "Nota: " + notaMedia + "/5";
 }
 
 function MostrarAvaliacoes(avalicoes) {
@@ -137,12 +148,11 @@ function MostrarAvaliacoes(avalicoes) {
         const p = document.createElement('p');
         const pAvalicao = document.createElement('p');
 
-        // Realiza a chamada AJAX de forma síncrona para obter o nome do usuário
-        const result = fetch(`http://localhost:3006/usuario/` + avaliacao.usuario_id, {
+        // Realiza a chamada de forma síncrona para obter o nome do usuário
+        fetch(`http://localhost:3006/usuario/nome/` + avaliacao.usuario_id, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': token
             },
         })
             .then(response => response.json())
@@ -153,6 +163,7 @@ function MostrarAvaliacoes(avalicoes) {
             .catch(error => {
                 console.error('Erro ao pegar o nome do usuário:', error);
             });
+
 
         p.textContent = avaliacao.comentario;
         pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
@@ -203,7 +214,19 @@ function CadastrarAvaliacao() {
         },
         body: JSON.stringify(dados)
     })
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                if (response.status === 401) {
+                    //quaso o usuario nao esteja logado será mandado para a pagina de login
+                    console.error('Não logado');
+                    window.location.href = "login.html";
+                    alert('Falha na autenticação, redirecionando para a página de login.');
+                } else {
+                    throw new Error('Erro na solicitação: ' + response.status);
+                }
+            }
+            return response.json();
+        })
         .then(data => {
             console.log('Avaliação cadastrada com sucesso:', data);
             window.location.reload();
@@ -213,6 +236,7 @@ function CadastrarAvaliacao() {
             console.error('Erro ao cadastrar avaliação:', error);
             // Faça algo em caso de erro
         });
+
 }
 
 //inicia o processor de inserir os dados da receita na pagina

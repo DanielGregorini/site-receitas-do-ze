@@ -24,7 +24,7 @@ router.get("/:id", async (req, res) => {
 // Criar avaliaca
 router.post("/", isAuthorized, async(req, res) => {
     // Executa a inserção na tabela de pessoa no DB
-    console.log(req.body)
+    //console.log(req.body)
     const dbResult = await AvaliacaoRepository.create(req.body);
   
     // Verificando se alguma Usuario foi "afetada" na tabela

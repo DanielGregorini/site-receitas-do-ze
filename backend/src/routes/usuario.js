@@ -10,6 +10,21 @@ router.get("/", isAuthorized, async (req, res) => {
 });
 
 // Obter por ID
+
+router.get("/nome/:id", async (req, res) => {
+    
+    const id = req.params.id;
+    const usuario = await UsuarioRepository.getByIdName(id);
+
+    if (usuario.length === 0) {
+        return res.status(404).json({ error: "Usuario não encontrado" });
+    }
+
+    console.log('Enviando Nome da Pessoa:')
+    console.log(usuario[0]);
+    return res.json(usuario[0]);
+});
+
 router.get("/:id",isAuthorized, async (req, res) => {
     console.log(res.body);
     const id = req.params.id;

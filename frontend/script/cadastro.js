@@ -74,6 +74,7 @@ function CadastrarUsuario() {
 
 //limpar os dados do form se o usuario for inserido ou falhar
 function LimparDados(){
+    
     const form = {
         nome: document.getElementById('nome'),
         email: document.getElementById('email'),
