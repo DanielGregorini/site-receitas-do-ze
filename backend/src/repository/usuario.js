@@ -72,13 +72,44 @@ const create = async (usuario) => {
 
 //atualizar
 const update = async (id, usuario) => {
-    const [query] = await connection.execute(
-        `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
-        [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
-    );
-    
-    return query;
-}
+    try {
+        // Verifique se o novo e-mail já existe
+        const emailExists = await emailExistsInDatabase(usuario.email);
+
+        if (emailExists) {
+            console.log("email ja cadastrado")
+            return "400";
+            
+        }
+
+        // Continue com a atualização se o e-mail não existir
+        const [rows] = await connection.execute(
+            `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
+            [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
+        );
+
+        // Verifique o número de linhas no resultado
+        const rowCount = rows.affectedRows;
+
+        if (rowCount > 0) {
+            return rows;
+        } else {
+            return rows;
+        }
+    } catch (error) {
+        // Lide com erros aqui, por exemplo, registrando ou lançando uma exceção
+        console.error('Erro na consulta: ' + error.message);
+        return { success: false, message: 'Erro na atualização do usuário.' };
+    }
+};
+
+// Função auxiliar para verificar se o e-mail já existe no banco de dados
+const emailExistsInDatabase = async (email) => {
+    const [rows] = await connection.execute('SELECT id FROM tb_usuario WHERE email = ?', [email]);
+    return rows.length > 0;
+};
+
+
 
 //deletar um usuario do banco de dados
 const remove = async (id) => {

@@ -3,7 +3,7 @@
 
 @URL=http://localhost:3006/usuario
 
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5NDQ1NzE3LCJleHAiOjE2OTk0NDkzMTd9.SjF85DxnlOnCJH8HOV3yQQ426lOyyuFt8mGnaurEq8o
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5OTIyMjMwLCJleHAiOjE2OTk5MjU4MzB9.jljEBn9E2yLSqU4il3uJ-3JwFpXcWc9SYQTnfMQ_Jw0
 ###Obter todoa as pessoas
 
 GET {{URL}}
@@ -22,7 +22,7 @@ Content-Type: application/json
 
 {
   "nome" : "daniel",
-  "email" : "zddsse@gmail.com",
+  "email" : "zddssce@gmail.com",
   "senha" : "123456",
   "nascimento" : "2020-09-19",
   "telefone" : "23232323"
@@ -31,12 +31,13 @@ Content-Type: application/json
 
 
 ###atualizar usuario
-PUT {{URL}}/2
+PUT {{URL}}/48
 Content-Type: application/json
+Authorization:{{TOKEN}}
 
 {
   "nome" : "ddd",
-  "email" : "Aze@gmail.com",
+  "email" : "z@gmail.com",
   "senha" : "A",
   "nascimento" : "2020-09-2",
   "telefone" : "1"

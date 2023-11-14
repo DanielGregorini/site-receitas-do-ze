@@ -9,8 +9,7 @@ router.get("/", isAuthorized, async (req, res) => {
     return res.json(usuarios);
 });
 
-// Obter por ID
-
+// Obter por ID apenas o nome
 router.get("/nome/:id", async (req, res) => {
     
     const id = req.params.id;
@@ -25,8 +24,9 @@ router.get("/nome/:id", async (req, res) => {
     return res.json(usuario[0]);
 });
 
+// Obter por ID
 router.get("/:id",isAuthorized, async (req, res) => {
-    console.log(res.body);
+    
     const id = req.params.id;
     const usuario = await UsuarioRepository.getById(id);
 
@@ -62,24 +62,29 @@ router.post("/", async (req, res) => {
 
 // Atualizar pessoa
 router.put("/:id", isAuthorized, async (req, res) => {
-
     const { id } = req.params;
     const usuario = req.body;
     const usuarioDB = await UsuarioRepository.getById(id);
 
     if (usuarioDB.length === 0) {
-        return res.status(404).json({ error: "Usuario não encontrada" });
+        return res.status(400).json({ error: "Usuário não encontrado para o ID fornecido." });
     }
 
     const dbResult = await UsuarioRepository.update(id, usuario);
 
-    if (dbResult.affectedRows === 0) {
-        return res.status(400).json({ error: "Falha ao atualizar usuario" });
+    if (dbResult === "400") {
+        return res.status(400).json({ error: "Email já cadastrado" });
     }
-    
-    //usuario.id = id;
-    return res.json({id, ...usuario});
+
+    if (dbResult.affectedRows < 0) {
+        return res.status(404).json({ error: "Nao afetou nada" });
+    }
+
+    // Se a atualização foi bem-sucedida, você pode retornar os dados atualizados se desejar.
+    const updatedUsuario = { id, ...usuario };
+    return res.json(updatedUsuario);
 });
+
 
 // Deletar pessoa
 router.delete("/:id", isAuthorized, async (req, res) => {

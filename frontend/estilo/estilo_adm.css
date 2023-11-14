@@ -7,3 +7,22 @@ body{
 .oleo-font {
     font-family: 'Oleo Script Swash Caps', cursive;
 }
+
+/*Rodapé*/
+
+body > footer{
+
+    clear: both;
+    margin: 0;
+    background-color: #B19242;
+    padding: 80px 30px 30px 40px;
+    display: flex;
+    width: auto;
+    flex-direction: row;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+body > footer > div{
+    margin: 5px;
+}

@@ -3,8 +3,6 @@ var URL_BASE = 'http://localhost:3006/login/';
 async function LoginUsuario() {
     try {
         
-        localStorage.clear();
-
         // Objeto que contém a referência para todos os campos do formulário
         const form = {
             login: document.getElementById('login'),
