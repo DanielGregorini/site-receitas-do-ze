@@ -6,9 +6,9 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (response.ok) {
             const receitas = await response.json();
+            
             FiltrarEOrdenarReceitas(receitas, termoPesquisa)
 
-            //exibirReceitas(receitas);
         } else {
             console.error('Erro ao buscar receitas');
         }
