@@ -1,6 +1,6 @@
 
 function GerarPerfil() {
-    
+
     const token = localStorage.getItem('token');
     const usuario_id = localStorage.getItem('id');
 
@@ -12,62 +12,77 @@ function GerarPerfil() {
             'Authorization': token
         },
     })
-    .then(response => {
-        if (!response.ok) {
-            //caso o token seja invalido
-            if (response.status === 401) {
-                // Caso o usuário não esteja logado, será redirecionado para a página de login
-                console.error('Não logado');
-                window.location.href = "../login.html";
-                alert('Falha na autenticação, redirecionando para a página de login.');
-            } else {
-                throw new Error('Erro na solicitação: ' + response.status);
+        .then(response => {
+            if (!response.ok) {
+                //caso o token seja invalido
+                if (response.status === 401) {
+                    // Caso o usuário não esteja logado, será redirecionado para a página de login
+
+                    console.error('Não logado');
+                    window.location.href = "../login.html";
+                    alert('Falha na autenticação, redirecionando para a página de login.');
+                } else {
+                    throw new Error('Erro na solicitação: ' + response.status);
+                }
             }
-        }
-        return response.json();
-    })
-    .then(usuario => {
-       
-        //coleta os elementos no html que serão inseridos os dados do usuario
-        const NomeCompletoPerfil = document.getElementById('perfil_nomecompleto');
-        const NomePerfil = document.getElementById('nome_perfil');
-        const EmailPerfil = document.getElementById('perfil_email');
-        const TelefonePerfil = document.getElementById('perfil_telefone');
-        const NascimentoPerfil = document.getElementById('perfil_nascimento');
-        
-        //limpa o html
-        NomeCompletoPerfil.innerHTML = ''
-        NomePerfil.innerHTML = ''
-        EmailPerfil.innerHTML = ''
-        TelefonePerfil.innerHTML = ''
-        NascimentoPerfil.innerHTML = ''
+            return response.json();
+        })
+        .then(usuario => {
 
-        //coleta o primeiro nome
-        const partesNome = usuario.nome.split(' ');
-        // Pegar o primeiro elemento (primeiro nome)
-        const primeiroNome = partesNome[0];
+            //coleta os elementos no html que serão inseridos os dados do usuario
+            const NomeCompletoPerfil = document.getElementById('perfil_nomecompleto');
+            const NomePerfil = document.getElementById('nome_perfil');
+            const EmailPerfil = document.getElementById('perfil_email');
+            const TelefonePerfil = document.getElementById('perfil_telefone');
+            const NascimentoPerfil = document.getElementById('perfil_nascimento');
 
-        //insere no html os dados do usuario
-        NomePerfil.textContent = primeiroNome;
-        NomeCompletoPerfil.textContent = usuario.nome;
-        EmailPerfil.textContent = usuario.email;
-        TelefonePerfil.textContent = usuario.telefone;
-        const dataNascimento = new Date(usuario.nascimento);
+            //limpa o html
+            NomeCompletoPerfil.innerHTML = ''
+            NomePerfil.innerHTML = ''
+            EmailPerfil.innerHTML = ''
+            TelefonePerfil.innerHTML = ''
+            NascimentoPerfil.innerHTML = ''
 
-        //formata o dia/mes/ano
-        const dia = dataNascimento.getDate();
-        const mes = dataNascimento.getMonth() + 1;
-        const ano = dataNascimento.getFullYear();
+            //coleta o primeiro nome
+            const partesNome = usuario.nome.split(' ');
+            // Pegar o primeiro elemento (primeiro nome)
+            const primeiroNome = partesNome[0];
 
-        const dataFormatada = `${dia}/${mes}/${ano}`;
+            //insere no html os dados do usuario
+            NomePerfil.textContent = primeiroNome;
+            NomeCompletoPerfil.textContent = usuario.nome;
+            EmailPerfil.textContent = usuario.email;
+            TelefonePerfil.textContent = usuario.telefone;
+            const dataNascimento = new Date(usuario.nascimento);
 
-        // Atualizar o conteúdo do elemento HTML
-        NascimentoPerfil.textContent = dataFormatada;
+            const dia = dataNascimento.getDate();
+            const mes = dataNascimento.getMonth() + 1;
+            const ano = dataNascimento.getFullYear();
 
-    })
-    .catch(error => {
-        console.error('Erro ao pegar o nome do usuário:', error);
-    });
+            // Formate a data para o formato "YYYY-MM-DD"
+            const dataFormatada = `${ano}-${mes.toString().padStart(2, '0')}-${dia.toString().padStart(2, '0')}`;
+
+            // Atualizar o conteúdo do elemento HTML
+            NascimentoPerfil.textContent = dataFormatada;
+
+            //elementos onde os dados setão editados
+            const form = {
+                nome: document.getElementById('nomeNovo'),
+                email: document.getElementById('emailNovo'),
+                nascimento: document.getElementById('nascimentoNovo'),
+                telefone: document.getElementById('telefoneNovo')
+            };
+
+            //insere os dados do usuario nos campos da edição
+            form.nome.value = usuario.nome;
+            form.email.value = usuario.email;
+            form.telefone.value = usuario.telefone;
+            form.nascimento.value = dataFormatada;
+
+        })
+        .catch(error => {
+            console.error('Erro ao pegar o nome do usuário:', error);
+        });
 }
 
 //função para atualizar o cadastro
@@ -120,35 +135,31 @@ function AtualizarCadastro() {
         body: JSON.stringify(dadosNovos)
     })
 
-    .then(response => {
-        if (!response.ok) {
-            if (response.status === 401) {
-                console.error('Não logado');
-                window.location.href = "../login.html";
-            } else if (response.status === 400) {
-                console.error('Email já cadastrado');
+        .then(response => {
+            if (!response.ok) {
+                if (response.status === 401) {
+                    console.error('Não logado');
+                    window.location.href = "../login.html";
+                } else if (response.status === 400) {
+                    console.error('Email já cadastrado');
 
-                // Você pode exibir uma mensagem de erro para o usuário aqui
-                alert('O e-mail já está cadastrado. Por favor, escolha outro.');
-            } else {
-                throw new Error('Erro na solicitação: ' + response.status);
+                    // Você pode exibir uma mensagem de erro para o usuário aqui
+                    alert('O e-mail já está cadastrado. Por favor, escolha outro.');
+                } else {
+                    throw new Error('Erro na solicitação: ' + response.status);
+                }
             }
-        }
-        return response.json();
-    })
-    .then(usuario => {
-        // Lógica adicional após a atualização do usuário, se necessário
-        console.log('Usuário atualizado:', usuario);
-    })
-    .catch(error => {
-        console.error('Erro ao atualizar o usuário:', error);
-    });
-    
+            return response.json();
+        })
+        .then(usuario => {
+            // Lógica adicional após a atualização do usuário, se necessário
+            console.log('Usuário atualizado:', usuario);
+        })
+        .catch(error => {
+            console.error('Erro ao atualizar o usuário:', error);
+        });
+
 }
-
-
-
-
 
 //chama a funcao para construição do perfil
 GerarPerfil();

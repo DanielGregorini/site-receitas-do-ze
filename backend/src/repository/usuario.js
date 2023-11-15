@@ -74,7 +74,7 @@ const create = async (usuario) => {
 const update = async (id, usuario) => {
     try {
         // Verifique se o novo e-mail já existe
-        const emailExists = await emailExistsInDatabase(usuario.email);
+        const emailExists = await emailExistsInDatabase(usuario.email, id);
 
         if (emailExists) {
             console.log("email ja cadastrado")
@@ -104,11 +104,18 @@ const update = async (id, usuario) => {
 };
 
 // Função auxiliar para verificar se o e-mail já existe no banco de dados
-const emailExistsInDatabase = async (email) => {
+const emailExistsInDatabase = async (email, id) => {
     const [rows] = await connection.execute('SELECT id FROM tb_usuario WHERE email = ?', [email]);
-    return rows.length > 0;
-};
 
+    if (rows.length > 0) {
+        // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
+        if(rows[0].id === id){
+            return false
+        }
+    }
+
+    return true;
+};
 
 
 //deletar um usuario do banco de dados

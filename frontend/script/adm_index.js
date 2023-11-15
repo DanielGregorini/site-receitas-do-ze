@@ -25,8 +25,7 @@ function FiltrarEOrdenarReceitas(receitas, filtro) {
     let receitasFiltradas = receitas.filter(receita =>
         receita.id_usuario == filtro
     );
-    
-        
+     
     ExibirReceitas(receitasFiltradas);
 }
 
@@ -40,14 +39,12 @@ function ExibirReceitas(receitas){
         const li = document.createElement('li');
         li.classList.add('list-group-item');
         const a = document.createElement('a');
-    
-        a.textContent = receita.titulo;
+        
+        a.textContent = "ID: " + receita.id + " "+ receita.titulo;
         a.href = `adm_receita.html?id=${receita.id}`;
-  
         li.appendChild(a);
         listaReceitas.appendChild(li);
     });
-    
 }
 
 CarregarReceitas();

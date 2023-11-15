@@ -2,22 +2,61 @@
 function alterarFuncao() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
-    const receitaId = urlParams.get('id');
-    
+    const receitaId = urlParams.get('id');    
     const botao_ = document.getElementById('botao')
- 
 
     // Verificar se há um ID na URL
     if (receitaId) {
-        botao_.innerText = 'Editar';
-        
-        botao_.onclick = EditarReceita;
 
+        const token = localStorage.getItem('token');
+        botao_.innerText = 'Editar';
+        botao_.onclick = EditarReceita;
         const titulo = document.getElementById('titulo');
         titulo.innerText = "Editar receita"; 
+        const URL_BASE = 'http://localhost:3006/receita/'
+        
+        fetch(URL_BASE + receitaId, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            
+        })
+        .then(result => {
+            if (!result.ok) {
+                //caso o token seja invalido
+                if (result.status === 401) {
+                    // Caso o usuário não esteja logado, será redirecionado para a página de login
+    
+                    console.error('Não logado');
+                    window.location.href = "../login.html";
+                    alert('Falha na autenticação, redirecionando para a página de login.');
+                }
+            }
+            return result.json();
+        })
+        .then(receita => {
 
+            console.log(receita);
+            //insere os dados da receita nas caixas de edição
+            const titulo_receita_nova = document.getElementById('titulo_receita_nova');
+            const descricao_receita_nova = document.getElementById('descricao_receita_nova');
+            const ingredientes_receita_nova = document.getElementById('ingredientes_receita_nova');
+            const passos_receita_nova = document.getElementById('passoapasso_receita_nova');
+
+            titulo_receita_nova.value = receita.titulo;
+            descricao_receita_nova.value = receita.descricao;
+            ingredientes_receita_nova.value = receita.ingredientes;
+            passos_receita_nova.value = receita.instrucoes;
+
+        })
+        .catch(err => {
+            console.error(err);
+            alert("Não foi possivel consultar os dados da receita");
+        });
     } else {
         // Se não houver um ID, estamos adicionando
+        titulo.innerText = "Adicionar receita"; 
         botao_.onclick = CriarNovaReceita;
         botao_.innerText = 'Adicionar';
     }
@@ -37,7 +76,6 @@ function EditarReceita(){
     const ingredientes_receita_nova = document.getElementById('ingredientes_receita_nova');
     const passos_receita_nova = document.getElementById('passoapasso_receita_nova');
     
-
     const receita = {
         titulo: titulo_receita_nova.value,
         descricao: descricao_receita_nova.value,
@@ -63,6 +101,7 @@ function EditarReceita(){
     .then(data => {
         console.log(data); // Faça algo com a resposta, se necessário
         alert("Receita atualizada com sucesso!");
+        window.location.href = "adm_index.html";
         // Redirecione ou faça outras ações após a atualização bem-sucedida
     })
     .catch(err => {
@@ -117,11 +156,7 @@ function CriarNovaReceita(){
     })
     .then(usuario => {
         console.log(usuario);
-        alert("Receita nao cadastrada!");
-        
-        setTimeout(function() {
-            window.location.href = "login.html";
-        }, 500); // 2000 milissegundos (2 segundos)
+        alert("Receita cadastrada!");
     })
     .catch(err => {
         console.error(err);
