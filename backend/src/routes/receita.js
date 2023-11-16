@@ -79,6 +79,7 @@ router.put("/:id", isAuthorized, async (req, res) => {
 
 // Deletar receita
 router.delete("/:id", isAuthorized, async (req, res) => {
+    
     console.log(req.body);
     const { id } = req.params;
     const receitaDB = await ReceitaRepository.getById(id);

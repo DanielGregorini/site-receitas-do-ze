@@ -29,9 +29,9 @@ const getById = async (id) => {
 const getByEmailAndPassoword = async (email, password) => {
 
     const [rows] = await connection.execute(
-        `SELECT id, nome, email, senha FROM ${TABLE} WHERE email = ? AND senha = ? LIMIT 1`,
-        [email, password]
-      );
+        `SELECT id, nome, email, senha FROM ${TABLE} WHERE LOWER(email) = LOWER(?) AND senha = ? LIMIT 1`,
+        [email.toLowerCase(), password]
+    );
 
     return rows;
 }
@@ -60,15 +60,17 @@ const getLogin = async (usuario) => {
 //insert
 const create = async (usuario) => {
     const [query] = await connection.execute(
-        `INSERT INTO ${TABLE} (nome, email, senha, nascimento, telefone) VALUES (
-            "${usuario.nome}", 
-            "${usuario.email}", 
-            "${usuario.senha}",
-            "${usuario.nascimento}",
-            "${usuario.telefone}")`
+        `INSERT INTO ${TABLE} (nome, email, senha, nascimento, telefone) VALUES (?, ?, ?, ?, ?)`,
+        [
+            usuario.nome,
+            usuario.email.toLowerCase(), // Convertendo o email para minúsculas
+            usuario.senha,
+            usuario.nascimento,
+            usuario.telefone
+        ]
     );
     return query;
-}
+};
 
 //atualizar
 const update = async (id, usuario) => {

@@ -4,7 +4,7 @@
 @URL=http://localhost:3006/receita
 @TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5ODk1ODkxLCJleHAiOjE2OTk4OTk0OTF9.8LITvU3-icngH8VcbicXSDS8HbHsx_OuSHInZgJ6MVM
 
-###Obter todoa as pessoas
+###Obter todoa as receitas
 
 GET {{URL}}
 ###

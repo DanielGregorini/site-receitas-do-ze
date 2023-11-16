@@ -104,10 +104,27 @@ function FiltrarAvaliacoes(avaliacoes, idReceita) {
         avaliacao.receita_id == idReceita
     );
 
+    const idUsuarioLogado = localStorage.getItem('id');
 
-    MostrarAvaliacoes(avaliacoesFiltradas);
-    GerarNotaReceita(avaliacoesFiltradas);
+    // Separa as avaliações feitas pelo usuário logado das demais
+    const avaliacoesDoUsuario = avaliacoesFiltradas.filter(avaliacao =>
+        avaliacao.usuario_id == idUsuarioLogado
+    );
+
+    const outrasAvaliacoes = avaliacoesFiltradas.filter(avaliacao =>
+        avaliacao.usuario_id != idUsuarioLogado
+    );
+
+    // Ordena as outras avaliações por mais recentes
+    outrasAvaliacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
+
+    // Junta as avaliações do usuário logado e as outras avaliações ordenadas
+    const avaliacoesOrdenadas = avaliacoesDoUsuario.concat(outrasAvaliacoes);
+
+    MostrarAvaliacoes(avaliacoesOrdenadas);
+    GerarNotaReceita(avaliacoesOrdenadas);
 }
+
 
 //calcula a media das notas dadas nas avaliações
 function GerarNotaReceita(avaliacoes) {
@@ -239,5 +256,22 @@ function CadastrarAvaliacao() {
 
 }
 
+function SalvarBusca(){
+    LimparPesquisa();
+    const pesquisa = document.getElementById('botao_pesquisa').value
+
+    //verifica se a pesquisa não é nula ou vazia
+    if(pesquisa){
+        localStorage.setItem('pesquisa', pesquisa);
+        window.location.href = "busca.html";
+
+    }
+}
+
+function LimparPesquisa(){
+    localStorage.removeItem('pesquisa');
+}
+
 //inicia o processor de inserir os dados da receita na pagina
 ObterEExibirReceita();
+LimparPesquisa();

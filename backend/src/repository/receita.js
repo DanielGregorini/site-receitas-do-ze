@@ -50,6 +50,7 @@ const update = async (id, receita) => {
 
 //deletar uma receita
 const remove = async (id) => {
+    console.log("Removendo receita: ID:", id)
     const [query] = await connection.execute(
         `DELETE FROM ${TABLE} WHERE id=${id}`
     );
