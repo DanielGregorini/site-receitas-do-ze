@@ -88,6 +88,7 @@ router.put("/:id", isAuthorized, async (req, res) => {
 
 // Deletar pessoa
 router.delete("/:id", isAuthorized, async (req, res) => {
+    console.log("Deletando Usuario ID: ",id)
     const { id } = req.params;
     const usuarioDB = await UsuarioRepository.getById(id);
 

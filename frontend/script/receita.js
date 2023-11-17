@@ -28,7 +28,7 @@ async function ObterEExibirReceita() {
 function MostrarReceita(receita) {
 
     //carrega os comentarios da pagina
-    CarregarAvaliacoes(receita.id)
+    CarregarAvaliacoes(receita)
 
     //adiciona o titulo na pagina
     const tituloReceita = document.getElementById('nome_receita');
@@ -79,7 +79,7 @@ function MostrarReceita(receita) {
 ///////--Funções das avaliações--////////
 
 //carrega todas as avaliações
-async function CarregarAvaliacoes(idReceita) {
+async function CarregarAvaliacoes(receita) {
 
     //usa protocolo http para consultar todas as receitas e filtras as suas avaliações
     try {
@@ -87,7 +87,7 @@ async function CarregarAvaliacoes(idReceita) {
 
         if (response.ok) {
             const avaliacoes = await response.json();
-            FiltrarAvaliacoes(avaliacoes, idReceita)
+            FiltrarAvaliacoes(avaliacoes, receita.id, receita)
 
         } else {
             console.error('Erro ao buscar receitas');
@@ -98,7 +98,7 @@ async function CarregarAvaliacoes(idReceita) {
 
 }
 
-function FiltrarAvaliacoes(avaliacoes, idReceita) {
+function FiltrarAvaliacoes(avaliacoes, idReceita, receita) {
     // Filtra as avaliações com base no id da receita
     const avaliacoesFiltradas = avaliacoes.filter(avaliacao =>
         avaliacao.receita_id == idReceita
@@ -121,7 +121,9 @@ function FiltrarAvaliacoes(avaliacoes, idReceita) {
     // Junta as avaliações do usuário logado e as outras avaliações ordenadas
     const avaliacoesOrdenadas = avaliacoesDoUsuario.concat(outrasAvaliacoes);
 
-    MostrarAvaliacoes(avaliacoesOrdenadas);
+   
+
+    MostrarAvaliacoes(avaliacoesOrdenadas, receita);
     GerarNotaReceita(avaliacoesOrdenadas);
 }
 
@@ -153,17 +155,24 @@ function GerarNotaReceita(avaliacoes) {
     avaliacaoReceita.innerHTML = "Nota: " + notaMedia + "/5";
 }
 
-function MostrarAvaliacoes(avalicoes) {
+function MostrarAvaliacoes(avalicoes, receita) {
 
     mainAvaliacoes = document.getElementById('comentarios_usuarios');
     const token = localStorage.getItem('token');
 
+    //
+    console.log(avalicoes);
+
     avalicoes.forEach(avaliacao => {
+        //console.log(avaliacao)
         // Cria os elementos para inserir no HTML
         const div = document.createElement('div');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
         const pAvalicao = document.createElement('p');
+        var buttonDeletar = document.createElement('button')
+        buttonDeletar.innerText = 'Deletar Avaliação'
+        
 
         // Realiza a chamada de forma síncrona para obter o nome do usuário
         fetch(`http://localhost:3006/usuario/nome/` + avaliacao.usuario_id, {
@@ -175,21 +184,66 @@ function MostrarAvaliacoes(avalicoes) {
             .then(response => response.json())
             .then(usuario => {
                 //o titulo do comentario
+                console.log(usuario)
                 h1.textContent = usuario.nome; // Adiciona o nome do usuário ao h1
+                p.textContent = avaliacao.comentario;
+                
+                pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
+                div.appendChild(h1);
+                div.appendChild(p);
+                div.appendChild(pAvalicao);
+
+                const IdUsuarioLogado = localStorage.getItem('id')
+
+                //se o dono da avaliacao for o usuario logado ele pode deletar sua avaliacao
+                if(usuario.id == IdUsuarioLogado){
+                    buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
+                    buttonDeletar.id = "botao_deletar_avaliacao";
+                    div.appendChild(buttonDeletar);
+                }
+
+                 mainAvaliacoes.appendChild(div);
+                
             })
             .catch(error => {
                 console.error('Erro ao pegar o nome do usuário:', error);
             });
+    });
 
+        mainAvaliacoes.addEventListener('click', async function (event) {
+        const target = event.target;
 
-        p.textContent = avaliacao.comentario;
-        pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
-
-        div.appendChild(h1);
-        div.appendChild(p);
-        div.appendChild(pAvalicao);
-
-        mainAvaliacoes.appendChild(div);
+        // Verifica se o botão Deletar foi clicado
+        if (target.tagName === 'BUTTON' && target.id === 'botao_deletar_avaliacao') {
+            // Obtém o ID da avaliação do atributo de dados
+            
+            const idAvaliacao = target.getAttribute('id_avaliacao');
+            
+            console.log('ID da Avaliacao para exclusão:', idAvaliacao);
+            // Obtém o token de autenticação do localStorage
+            const token = localStorage.getItem('token');
+            
+            // Construa a URL para a exclusão da receita
+            const URL = `http://localhost:3006/avaliacao/${idAvaliacao}`;
+           
+            try {
+                const response = await fetch(URL, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': token,
+                    },
+                });
+    
+                if (response.ok) {
+                    console.log('avaliacao excluída com sucesso!');
+                    location.reload();
+                } else {
+                    console.error('Erro ao excluir a avaliacao:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Erro durante a chamada à API:', error);
+            }
+        }
     });
 }
 

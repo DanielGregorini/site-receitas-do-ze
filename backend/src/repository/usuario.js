@@ -79,7 +79,7 @@ const update = async (id, usuario) => {
         const emailExists = await emailExistsInDatabase(usuario.email, id);
 
         if (emailExists) {
-            console.log("email ja cadastrado")
+            console.log("email ja cadastrado");
             return "400";
             
         }
@@ -109,12 +109,12 @@ const update = async (id, usuario) => {
 const emailExistsInDatabase = async (email, id) => {
     const [rows] = await connection.execute('SELECT id FROM tb_usuario WHERE email = ?', [email]);
 
-    if (rows.length > 0) {
+    
         // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
-        if(rows[0].id === id){
-            return false
+        if (rows.length > 0 && rows[0].id !== id) {
+            return false; 
         }
-    }
+    
 
     return true;
 };

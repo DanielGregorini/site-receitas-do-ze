@@ -20,7 +20,7 @@ function GerarPerfil() {
 
                     console.error('Não logado');
                     window.location.href = "../login.html";
-                    alert('Falha na autenticação, redirecionando para a página de login.');
+                    //alert('Falha na autenticação, redirecionando para a página de login.');
                 } else {
                     throw new Error('Erro na solicitação: ' + response.status);
                 }
@@ -154,6 +154,7 @@ function AtualizarCadastro() {
         .then(usuario => {
             // Lógica adicional após a atualização do usuário, se necessário
             console.log('Usuário atualizado:', usuario);
+            location.reload();
         })
         .catch(error => {
             console.error('Erro ao atualizar o usuário:', error);
@@ -161,5 +162,40 @@ function AtualizarCadastro() {
 
 }
 
+function DeletarConta() {
+   
+    // Confirmação do usuário antes de excluir a conta
+    var confirmacao = confirm("Tem certeza de que deseja excluir sua conta? Essa ação não pode ser desfeita!");
+  
+    if (confirmacao) {
+      // Lógica para excluir a conta (chame a API, etc.)
+      // Substitua este código pelo necessário para excluir a conta
+      const token = localStorage.getItem('token');
+      const id = localStorage.getItem('id')
+  
+      fetch('http://localhost:3006/usuario/'+id, {
+        method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+        },
+      })
+        .then(response => {
+          if (response.ok) {
+            console.log('Conta excluída com sucesso!');
+            // Redirecionar para a página de login ou outra página apropriada
+            localStorage.removeItem('token');
+            localStorage.removeItem('id');
+            window.location.href = '../index.html';
+
+          } else {
+            console.error('Erro ao excluir a conta:', response.statusText);
+          }
+        })
+        .catch(error => {
+          console.error('Erro durante a chamada à API:', error);
+        });
+    }
+  }
 //chama a funcao para construição do perfil
 GerarPerfil();

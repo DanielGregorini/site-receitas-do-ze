@@ -34,7 +34,7 @@ async function LoginUsuario() {
             localStorage.setItem('username', resultJson.user.email);
 
             // Redireciona para "index.html"
-            window.location.href = "index.html";
+            window.location.href = "adm/adm_perfil.html";
         } else {
             // Se a requisição falhar, lança um erro
             throw new Error("Erro ao realizar login");

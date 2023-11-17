@@ -3,7 +3,7 @@
 
 @URL=http://localhost:3006/usuario
 
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5OTIyMjMwLCJleHAiOjE2OTk5MjU4MzB9.jljEBn9E2yLSqU4il3uJ-3JwFpXcWc9SYQTnfMQ_Jw0
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNzAwMjI3NzI1LCJleHAiOjE3MDAyMzEzMjV9.BfFfwRIdrGBHFU-unL-dHNIqU1Mz9JhJmbUMGqVtilk
 ###Obter todoa as pessoas
 
 GET {{URL}}
@@ -45,5 +45,5 @@ Authorization:{{TOKEN}}
 
 
 ### deletar pessoa
-
-DELETE {{URL}}/1
+DELETE {{URL}}/48
+Authorization:{{TOKEN}}

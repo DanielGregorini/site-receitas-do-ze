@@ -2,7 +2,7 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNjk5ODk1ODkxLCJleHAiOjE2OTk4OTk0OTF9.8LITvU3-icngH8VcbicXSDS8HbHsx_OuSHInZgJ6MVM
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNzAwMjI3NzI1LCJleHAiOjE3MDAyMzEzMjV9.BfFfwRIdrGBHFU-unL-dHNIqU1Mz9JhJmbUMGqVtilk
 
 ###Obter todoa as receitas
 

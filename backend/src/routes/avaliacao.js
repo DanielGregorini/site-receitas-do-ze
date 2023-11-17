@@ -60,7 +60,9 @@ router.put("/:id", isAuthorized, async (req, res) => {
 // Deletar avalicao
 router.delete("/:id", isAuthorized, async (req, res) => {
     const { id } = req.params;
+    console.log("Deletando avalição: ",id)
     const avaliacaoDB = await AvaliacaoRepository.getById(id);
+    
 
     if (avaliacaoDB.length === 0) {
         return res.status(404).json({ error: "avaliação não encontrada" });

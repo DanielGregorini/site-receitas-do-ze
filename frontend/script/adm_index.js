@@ -7,7 +7,18 @@ async function CarregarReceitas() {
         const response = await fetch(`http://localhost:3006/receita/`);
 
         if (response.ok) {
+
             const receitas = await response.json();
+
+            //se o usuario nao tiver nem uma receita
+            if (receitas) {
+
+                const lista = document.getElementById('lista_de_receitas');
+                const h1 = document.createElement('h1');
+                h1.textContent = 'Sem receitas';
+                lista.appendChild(h1);
+                
+            }
             
             FiltrarEOrdenarReceitas(receitas, usuario_id);
         } else {
@@ -93,5 +104,8 @@ function ExibirReceitas(receitas) {
     });
     
 }
+
+// No arquivo adm_perfil.js
+  
 
 CarregarReceitas();
