@@ -4,12 +4,13 @@ async function CarregarReceitas() {
     const usuario_id = localStorage.getItem('id');
     
     try {
+        
         const response = await fetch(`http://localhost:3006/receita/`);
-
+        
         if (response.ok) {
 
             const receitas = await response.json();
-
+            
             //se o usuario nao tiver nem uma receita
             if (receitas) {
 
@@ -30,6 +31,7 @@ async function CarregarReceitas() {
 }
 
 function FiltrarEOrdenarReceitas(receitas, filtro) {
+    
     console.log(receitas); 
     console.log(filtro);   
     

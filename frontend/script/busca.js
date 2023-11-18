@@ -1,11 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-    
+
     document.getElementById('botao_confirmar').addEventListener('click', async () => {
         const termoPesquisa = document.getElementById('input_buscar').value;
         const response = await fetch(`http://localhost:3006/receita/`);
 
         console.log(termoPesquisa);
-        
         
         if (response.ok) {
             const receitas = await response.json();
@@ -16,13 +15,14 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Erro ao buscar receitas');
         }
     });
-
 });
 
 function FiltrarEOrdenarReceitas(receitas, filtro){
-    
+
     console.log(receitas);
     console.log(filtro);
+    const termoPesquisa = document.getElementById('input_buscar');
+    termoPesquisa.value = filtro;
 
     let receitasFiltradas = receitas.filter(receita =>
         receita.titulo.toLowerCase().includes(filtro.toLowerCase()) ||
@@ -36,11 +36,20 @@ function FiltrarEOrdenarReceitas(receitas, filtro){
 }
 
 function exibirReceitas(receitas) {
-
     const mainElement = document.querySelector('main');
     mainElement.innerHTML = ''; // Limpa o conteúdo existente na main
     
+    console.log(receitas);
+
+    if(receitas.length < 1){
+
+        const divReceita = document.createElement('div');
+        divReceita.textContent = "Sem Receita"
+        mainElement.appendChild(divReceita);
+    }
+
     receitas.forEach(receita => {
+
         const divReceita = document.createElement('div');
         const linkReceita = document.createElement('a');
         const pDescricao = document.createElement('p');
@@ -58,11 +67,14 @@ function exibirReceitas(receitas) {
 }
 
 async function PesquisaAutomatica() {
+
     const URL = 'http://localhost:3006/receita';
     const pesquisa = localStorage.getItem('pesquisa');
     localStorage.removeItem('pesquisa');
+    console.log("termo salvo:",pesquisa)
 
     if(pesquisa){
+        
         try {
             const response = await fetch(URL, {});
     
@@ -75,8 +87,7 @@ async function PesquisaAutomatica() {
         } catch (error) {
             console.error('Erro durante a chamada à API:', error);
         }
-    }
-    
+    }   
 }
 
 // Chame PesquisaAutomatica após o carregamento da página

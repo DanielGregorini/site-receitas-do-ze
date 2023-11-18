@@ -119,11 +119,11 @@ function FiltrarAvaliacoes(avaliacoes, idReceita, receita) {
     outrasAvaliacoes.sort((a, b) => new Date(b.data) - new Date(a.data));
 
     // Junta as avaliações do usuário logado e as outras avaliações ordenadas
-    const avaliacoesOrdenadas = avaliacoesDoUsuario.concat(outrasAvaliacoes);
+    const avaliacoesOrdenadas = [...avaliacoesDoUsuario,...outrasAvaliacoes];
 
-   
+   console.log(avaliacoesOrdenadas);
 
-    MostrarAvaliacoes(avaliacoesOrdenadas, receita);
+    MostrarAvaliacoes( avaliacoesOrdenadas, receita);
     GerarNotaReceita(avaliacoesOrdenadas);
 }
 
@@ -155,77 +155,71 @@ function GerarNotaReceita(avaliacoes) {
     avaliacaoReceita.innerHTML = "Nota: " + notaMedia + "/5";
 }
 
-function MostrarAvaliacoes(avalicoes, receita) {
-
-    mainAvaliacoes = document.getElementById('comentarios_usuarios');
+async function MostrarAvaliacoes(avalicoes, receita) {
+    const mainAvaliacoes = document.getElementById('comentarios_usuarios');
     const token = localStorage.getItem('token');
 
-    //
     console.log(avalicoes);
 
-    avalicoes.forEach(avaliacao => {
-        //console.log(avaliacao)
-        // Cria os elementos para inserir no HTML
+    for (const avaliacao of avalicoes) {
         const div = document.createElement('div');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
         const pAvalicao = document.createElement('p');
-        var buttonDeletar = document.createElement('button')
-        buttonDeletar.innerText = 'Deletar Avaliação'
-        
+        const buttonDeletar = document.createElement('button');
+        buttonDeletar.innerText = 'Deletar Avaliação';
 
-        // Realiza a chamada de forma síncrona para obter o nome do usuário
-        fetch(`http://localhost:3006/usuario/nome/` + avaliacao.usuario_id, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-        })
-            .then(response => response.json())
-            .then(usuario => {
-                //o titulo do comentario
-                console.log(usuario)
-                h1.textContent = usuario.nome; // Adiciona o nome do usuário ao h1
-                p.textContent = avaliacao.comentario;
-                
-                pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
-                div.appendChild(h1);
-                div.appendChild(p);
-                div.appendChild(pAvalicao);
-
-                const IdUsuarioLogado = localStorage.getItem('id')
-
-                //se o dono da avaliacao for o usuario logado ele pode deletar sua avaliacao
-                if(usuario.id == IdUsuarioLogado){
-                    buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
-                    buttonDeletar.id = "botao_deletar_avaliacao";
-                    div.appendChild(buttonDeletar);
-                }
-
-                 mainAvaliacoes.appendChild(div);
-                
-            })
-            .catch(error => {
-                console.error('Erro ao pegar o nome do usuário:', error);
+        try {
+            const response = await fetch(`http://localhost:3006/usuario/nome/` + avaliacao.usuario_id, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
             });
-    });
 
-        mainAvaliacoes.addEventListener('click', async function (event) {
+            if (!response.ok) {
+                throw new Error('Erro ao obter o nome do usuário');
+            }
+
+            const usuario = await response.json();
+            console.log(usuario);
+
+            h1.textContent = usuario.nome;
+            p.textContent = avaliacao.comentario;
+            pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
+            div.appendChild(h1);
+            div.appendChild(p);
+            div.appendChild(pAvalicao);
+
+            const IdUsuarioLogado = localStorage.getItem('id');
+
+            if (usuario.id == IdUsuarioLogado) {
+                buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
+                buttonDeletar.id = "botao_deletar_avaliacao";
+                div.appendChild(buttonDeletar);
+            }
+
+            mainAvaliacoes.appendChild(div);
+        } catch (error) {
+            console.error('Erro ao pegar o nome do usuário:', error);
+        }
+    }
+
+    mainAvaliacoes.addEventListener('click', async function (event) {
         const target = event.target;
 
         // Verifica se o botão Deletar foi clicado
         if (target.tagName === 'BUTTON' && target.id === 'botao_deletar_avaliacao') {
             // Obtém o ID da avaliação do atributo de dados
-            
             const idAvaliacao = target.getAttribute('id_avaliacao');
-            
+
             console.log('ID da Avaliacao para exclusão:', idAvaliacao);
             // Obtém o token de autenticação do localStorage
             const token = localStorage.getItem('token');
-            
+
             // Construa a URL para a exclusão da receita
             const URL = `http://localhost:3006/avaliacao/${idAvaliacao}`;
-           
+
             try {
                 const response = await fetch(URL, {
                     method: 'DELETE',
@@ -233,7 +227,7 @@ function MostrarAvaliacoes(avalicoes, receita) {
                         'Authorization': token,
                     },
                 });
-    
+
                 if (response.ok) {
                     console.log('avaliacao excluída com sucesso!');
                     location.reload();
@@ -246,6 +240,7 @@ function MostrarAvaliacoes(avalicoes, receita) {
         }
     });
 }
+
 
 //Funcoes de insercao de comentario da receita //
 

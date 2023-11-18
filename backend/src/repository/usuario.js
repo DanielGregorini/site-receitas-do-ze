@@ -119,7 +119,6 @@ const emailExistsInDatabase = async (email, id) => {
     return true;
 };
 
-
 //deletar um usuario do banco de dados
 const remove = async (id) => {
     const [query] = await connection.execute(
