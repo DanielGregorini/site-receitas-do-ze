@@ -1,4 +1,5 @@
 
+//funcao para pesquisa, chamada no botão de pesquisa do header
 function SalvarBusca(){
     LimparPesquisa();
     const pesquisa = document.getElementById('botao_pesquisa').value
@@ -11,6 +12,7 @@ function SalvarBusca(){
     }
 }
 
+//nos botões de categoria salva pesquisa em encaminha para pagina de pesquisa
 function SalvarBuscaCategoria(categoria) {
     LimparPesquisa();
     
@@ -21,6 +23,8 @@ function SalvarBuscaCategoria(categoria) {
     }
 }
 
+//requisita do backend todas as receitas para funcao ExibirReceitasAleatorias
+//selecionar aleatoriamente 6 receitas
 async function ReceitasAleatorias(){
     const URL = 'http://localhost:3006/receita';
     
@@ -42,6 +46,7 @@ async function ReceitasAleatorias(){
     
 }
 
+//carrega a sessão do site com algumas receitas aleatórias
 async function ExibirReceitasAleatorias(receitas) {
     //gera uma lista aleatoria de receitas
 
@@ -68,9 +73,11 @@ async function ExibirReceitasAleatorias(receitas) {
     });
 }
 
+//limpar a pesquisa no storeage
 function LimparPesquisa(){
     localStorage.removeItem('pesquisa');
 }
 
+//chama as funções usadas na pagina
 LimparPesquisa();
 ReceitasAleatorias();

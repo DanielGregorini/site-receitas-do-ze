@@ -73,7 +73,6 @@ function MostrarReceita(receita) {
         li.textContent = instrucao.trim();
         instrucoesReceita.appendChild(li);
     });
-
 }
 
 ///////--Funções das avaliações--////////
@@ -121,7 +120,7 @@ function FiltrarAvaliacoes(avaliacoes, idReceita, receita) {
     // Junta as avaliações do usuário logado e as outras avaliações ordenadas
     const avaliacoesOrdenadas = [...avaliacoesDoUsuario,...outrasAvaliacoes];
 
-   console.log(avaliacoesOrdenadas);
+    console.log(avaliacoesOrdenadas);
 
     MostrarAvaliacoes( avaliacoesOrdenadas, receita);
     GerarNotaReceita(avaliacoesOrdenadas);
@@ -241,7 +240,6 @@ async function MostrarAvaliacoes(avalicoes, receita) {
     });
 }
 
-
 //Funcoes de insercao de comentario da receita //
 
 function CadastrarAvaliacao() {
@@ -279,8 +277,7 @@ function CadastrarAvaliacao() {
             'Authorization': token
         },
         body: JSON.stringify(dados)
-    })
-        .then(response => {
+    }).then(response => {
             if (!response.ok) {
                 if (response.status === 401) {
                     //quaso o usuario nao esteja logado será mandado para a pagina de login
@@ -292,17 +289,14 @@ function CadastrarAvaliacao() {
                 }
             }
             return response.json();
-        })
-        .then(data => {
+        }).then(data => {
             console.log('Avaliação cadastrada com sucesso:', data);
             window.location.reload();
             // Faça algo após cadastrar a avaliação, se necessário
-        })
-        .catch(error => {
+        }).catch(error => {
             console.error('Erro ao cadastrar avaliação:', error);
             // Faça algo em caso de erro
         });
-
 }
 
 function SalvarBusca(){

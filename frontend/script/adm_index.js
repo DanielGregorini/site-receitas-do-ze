@@ -107,7 +107,4 @@ function ExibirReceitas(receitas) {
     
 }
 
-// No arquivo adm_perfil.js
-  
-
 CarregarReceitas();

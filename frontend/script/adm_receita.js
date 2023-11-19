@@ -1,4 +1,11 @@
 
+/*
+    Se o usuario selecionou uma receita no indexAdm, a funcao altera a pagina para edição
+mudando o titulo da pagina e já carregando os dados da receita nos campos de edição. Também
+também alterando o botão para chamar a função de edição.
+     Caso não tenha id na URL a função deixa como está a pagina como de criação de nova
+Receitas.*/ 
+
 function alterarFuncao() {
     const queryString = window.location.search;
     const urlParams = new URLSearchParams(queryString);
@@ -62,6 +69,7 @@ function alterarFuncao() {
     }
 }
 
+//funcao para edição de uma receita
 function EditarReceita(){
     
     const token = localStorage.getItem('token');
@@ -111,6 +119,7 @@ function EditarReceita(){
 
 }
 
+//função para criar uma nova receita
 function CriarNovaReceita(){
     const URL_BASE = 'http://localhost:3006/receita/'
     const token = localStorage.getItem('token');
