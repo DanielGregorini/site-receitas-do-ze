@@ -2,7 +2,7 @@
 ///rest client
 
 @URL=http://localhost:3006/receita
-@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MTMsIm5vbWUiOiJqdWMgYW1vcmEiLCJlbWFpbCI6InpAZ21haWwuY29tIiwiaWF0IjoxNzAwMjI3NzI1LCJleHAiOjE3MDAyMzEzMjV9.BfFfwRIdrGBHFU-unL-dHNIqU1Mz9JhJmbUMGqVtilk
+@TOKEN=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6Miwibm9tZSI6IkRhbmllbCBNYWhsIEdyZWdvcmluaSIsImVtYWlsIjoiYXplQGdtYWlsLmNvbSIsImlhdCI6MTcwMDYwNDgzMywiZXhwIjoxNzAwNjA4NDMzfQ.mjzn1id_6o4ZxscVMhaU9zEChnoFfRM_EYHkinVkrlg
 
 ###Obter todoa as receitas
 
@@ -19,13 +19,23 @@ Authorization: {{TOKEN}}
 Content-Type: application/json
 
 {
-  "titulo" : "Bolo de felicidade",
-  "descricao" : "felicidade é tao feliz que morreu",
-  "ingredientes" : "Daniel;taraxa;Vitor;laerte",
-  "instrucoes" : "Mate o laerte ;Vitor é espertinho; Fl ;nao me mata vitor;",
-  "id_usuario" : 2,
-  "criacao" : "2020-10-12"
+  "titulo": "Massa Carbonara",
+  "descricao": "Prato de massa italiano com bacon, ovos e queijo parmesão",
+  "ingredientes": "Espaguete; Bacon; Ovos; Queijo parmesão",
+  "instrucoes": "Cozinhe o espaguete; Misture bacon, ovos e queijo; Misture com o espaguete cozido.",
+  "id_usuario": 47,
+  "criacao": "2022-10-01"
 }
+
+
+
+
+
+
+
+
+
+
 
 ###atualizar receita
 PUT {{URL}}/2
