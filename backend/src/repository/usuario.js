@@ -80,6 +80,7 @@ const update = async (id, usuario) => {
 
         if (emailExists) {
             console.log("email ja cadastrado");
+            console.log('erro 400')
             return "400";
             
         }
@@ -111,12 +112,12 @@ const emailExistsInDatabase = async (email, id) => {
 
     
         // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
-        if (rows.length > 0 && rows[0].id !== id) {
-            return false; 
+        if (rows.length < 0 && rows[0].id == id) {
+            return true; 
         }
     
 
-    return true;
+    return false;
 };
 
 //deletar um usuario do banco de dados

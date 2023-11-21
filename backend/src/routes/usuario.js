@@ -60,8 +60,9 @@ router.post("/", async (req, res) => {
 
 })
 
-// Atualizar pessoa
+// Atualizar usuario
 router.put("/:id", isAuthorized, async (req, res) => {
+     console.log("dcsdsdsd")
     const { id } = req.params;
     const usuario = req.body;
     const usuarioDB = await UsuarioRepository.getById(id);
@@ -86,7 +87,7 @@ router.put("/:id", isAuthorized, async (req, res) => {
 });
 
 
-// Deletar pessoa
+// Deletar usuario
 router.delete("/:id", isAuthorized, async (req, res) => {
     console.log("Deletando Usuario ID: ",id)
     const { id } = req.params;
