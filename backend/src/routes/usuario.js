@@ -62,7 +62,6 @@ router.post("/", async (req, res) => {
 
 // Atualizar usuario
 router.put("/:id", isAuthorized, async (req, res) => {
-     console.log("dcsdsdsd")
     const { id } = req.params;
     const usuario = req.body;
     const usuarioDB = await UsuarioRepository.getById(id);
