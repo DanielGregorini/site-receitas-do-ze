@@ -166,6 +166,7 @@ function CriarNovaReceita(){
     .then(usuario => {
         console.log(usuario);
         alert("Receita cadastrada!");
+        window.location.href = "adm_index.html";
     })
     .catch(err => {
         console.error(err);

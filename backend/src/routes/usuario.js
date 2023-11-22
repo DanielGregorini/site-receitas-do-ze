@@ -11,7 +11,7 @@ router.get("/", isAuthorized, async (req, res) => {
 
 // Obter por ID apenas o nome
 router.get("/nome/:id", async (req, res) => {
-    
+
     const id = req.params.id;
     const usuario = await UsuarioRepository.getByIdName(id);
 
@@ -25,8 +25,8 @@ router.get("/nome/:id", async (req, res) => {
 });
 
 // Obter por ID
-router.get("/:id",isAuthorized, async (req, res) => {
-    
+router.get("/:id", isAuthorized, async (req, res) => {
+
     const id = req.params.id;
     const usuario = await UsuarioRepository.getById(id);
 
@@ -70,25 +70,38 @@ router.put("/:id", isAuthorized, async (req, res) => {
         return res.status(400).json({ error: "Usuário não encontrado para o ID fornecido." });
     }
 
-    const dbResult = await UsuarioRepository.update(id, usuario);
 
-    if (dbResult === "400") {
+    // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
+    const resValida = await UsuarioRepository.getByEmail(usuario.email);
+
+
+    if (resValida.length > 0 && resValida[0].id != id) {
         return res.status(400).json({ error: "Email já cadastrado" });
     }
 
-    if (dbResult.affectedRows < 0) {
-        return res.status(404).json({ error: "Nao afetou nada" });
+    try {
+        const dbResult = await UsuarioRepository.update(id, usuario);
+    
+        if (dbResult.affectedRows === 0) {
+            return res.status(404).json({ error: "Nao afetou nada" });
+        }
+    
+        // Se a atualização foi bem-sucedida, você pode retornar os dados atualizados se desejar.
+        const updatedUsuario = { id, ...usuario };
+        return res.json(updatedUsuario);
+    
+    } catch (err) {
+        return res.status(400).json({ error: "errrrr" + err });
     }
 
-    // Se a atualização foi bem-sucedida, você pode retornar os dados atualizados se desejar.
-    const updatedUsuario = { id, ...usuario };
-    return res.json(updatedUsuario);
+
+    
 });
 
 
 // Deletar usuario
 router.delete("/:id", isAuthorized, async (req, res) => {
-    console.log("Deletando Usuario ID: ",id)
+    console.log("Deletando Usuario ID: ", id)
     const { id } = req.params;
     const usuarioDB = await UsuarioRepository.getById(id);
 

@@ -5,7 +5,7 @@ const TABLE = 'tb_avaliacao';
 const getAll = async () => {
 
     const [query] = await connection.execute(
-        `SELECT id, receita_id, usuario_id, classificacao, comentario, data_avaliacao FROM ${TABLE}`
+        `SELECT tb_avaliacao.id, receita_id, usuario_id, classificacao,comentario, data_avaliacao, nome FROM ${TABLE} INNER JOIN tb_usuario ON tb_avaliacao.usuario_id = tb_usuario.id`
     );
 
     return query;

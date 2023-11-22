@@ -167,41 +167,29 @@ async function MostrarAvaliacoes(avalicoes, receita) {
         const pAvalicao = document.createElement('p');
         const buttonDeletar = document.createElement('button');
         buttonDeletar.innerText = 'Deletar Avaliação';
+        
+        
+        h1.textContent = avaliacao.nome;
+        p.textContent = avaliacao.comentario;
+        
 
-        try {
-            const response = await fetch(`http://localhost:3006/usuario/nome/` + avaliacao.usuario_id, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            });
+        pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
+        div.appendChild(h1);
+        div.appendChild(p);
+        div.appendChild(pAvalicao);
+        
 
-            if (!response.ok) {
-                throw new Error('Erro ao obter o nome do usuário');
-            }
-
-            const usuario = await response.json();
-            console.log(usuario);
-
-            h1.textContent = usuario.nome;
-            p.textContent = avaliacao.comentario;
-            pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
-            div.appendChild(h1);
-            div.appendChild(p);
-            div.appendChild(pAvalicao);
-
-            const IdUsuarioLogado = localStorage.getItem('id');
-
-            if (usuario.id == IdUsuarioLogado) {
-                buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
-                buttonDeletar.id = "botao_deletar_avaliacao";
-                div.appendChild(buttonDeletar);
-            }
-
-            mainAvaliacoes.appendChild(div);
-        } catch (error) {
-            console.error('Erro ao pegar o nome do usuário:', error);
+        const IdUsuarioLogado = localStorage.getItem('id');
+        
+        if (avaliacao.usuario_id == IdUsuarioLogado) {
+            buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
+            buttonDeletar.id = "botao_deletar_avaliacao";
+            div.appendChild(buttonDeletar);
         }
+        
+        mainAvaliacoes.appendChild(div);
+       
+        
     }
 
     mainAvaliacoes.addEventListener('click', async function (event) {

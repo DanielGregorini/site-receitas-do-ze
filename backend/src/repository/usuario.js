@@ -3,12 +3,12 @@ const TABLE = 'tb_usuario';
 
 //obter todos os usuarios
 const getAll = async () => {
-
     const [query] = await connection.execute(
-        `SELECT id, nome, email, nascimento, telefone FROM ${TABLE}`
+        `SELECT id as id, nome as nome, email as email, nascimento as nascimento, telefone as telefone FROM ${TABLE}`
     );
     return query;
 }
+
 const getByIdName = async (id) => {
     const [query] = await connection.execute(
         `SELECT id, nome FROM ${TABLE} WHERE  id = 
@@ -40,21 +40,21 @@ const getByEmailAndPassoword = async (email, password) => {
 //obter uma login
 const getLogin = async (usuario) => {
     try {
-      const [rows] = await connection.execute(
-        `SELECT id, nome, email FROM ${TABLE} WHERE email = ? AND senha = ? LIMIT 1`,
-        [usuario.email, usuario.senha]
-      );
-  
-      // Verifique o número de linhas no resultado
-      const rowCount = rows.length;
-  
-      return rowCount;
+        const [rows] = await connection.execute(
+            `SELECT id, nome, email FROM ${TABLE} WHERE email = ? AND senha = ? LIMIT 1`,
+            [usuario.email, usuario.senha]
+        );
+
+        // Verifique o número de linhas no resultado
+        const rowCount = rows.length;
+
+        return rowCount;
     } catch (error) {
-      // Lide com erros aqui, por exemplo, registrando ou lançando uma exceção
-      console.error('Erro na consulta: ' + error);
-      throw error;
+        // Lide com erros aqui, por exemplo, registrando ou lançando uma exceção
+        console.error('Erro na consulta: ' + error);
+        throw error;
     }
-  };
+};
 
 
 //insert
@@ -74,50 +74,26 @@ const create = async (usuario) => {
 
 //atualizar
 const update = async (id, usuario) => {
-    try {
-        // Verifique se o novo e-mail já existe
-        const emailExists = await emailExistsInDatabase(usuario.email, id);
+    // Continue com a atualização se o e-mail não existir
+    const [rows] = await connection.execute(
+        `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
+        [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
+    );
 
-        if (emailExists) {
-            console.log("email ja cadastrado");
-            console.log('erro 400')
-            return "400";
-            
-        }
-
-        // Continue com a atualização se o e-mail não existir
-        const [rows] = await connection.execute(
-            `UPDATE ${TABLE} SET nome = ?, email = ?, nascimento = ?, telefone = ? WHERE id = ?`,
-            [usuario.nome, usuario.email, usuario.nascimento, usuario.telefone, id]
-        );
-
-        // Verifique o número de linhas no resultado
-        const rowCount = rows.affectedRows;
-
-        if (rowCount > 0) {
-            return rows;
-        } else {
-            return rows;
-        }
-    } catch (error) {
-        // Lide com erros aqui, por exemplo, registrando ou lançando uma exceção
-        console.error('Erro na consulta: ' + error.message);
-        return { success: false, message: 'Erro na atualização do usuário.' };
-    }
+    return rows;
 };
 
 // Função auxiliar para verificar se o e-mail já existe no banco de dados
-const emailExistsInDatabase = async (email, id) => {
-    const [rows] = await connection.execute('SELECT id FROM tb_usuario WHERE email = ?', [email]);
+const getByEmail = async (email) => {
+    const [rows] = await connection.execute('SELECT * FROM tb_usuario WHERE email = ?', [email]);
 
-    
-        // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
-        if (rows.length < 0 && rows[0].id == id) {
-            return true; 
-        }
-    
+    return rows;
+};
 
-    return false;
+const existsEmail = async (email) => {
+    const [rows] = await connection.execute('SELECT count(*) as count FROM tb_usuario WHERE email = ?', [email]);
+
+    return rows[0].count > 0;
 };
 
 //deletar um usuario do banco de dados
@@ -127,5 +103,5 @@ const remove = async (id) => {
     );
     return query;
 }
- 
-module.exports = {getAll, create, getById, update, remove, getLogin, getByEmailAndPassoword, getByIdName}
+
+module.exports = { getAll, create, getById, update, remove, getLogin, getByEmailAndPassoword, getByEmail, getByIdName }
