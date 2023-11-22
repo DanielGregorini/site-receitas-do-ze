@@ -1,0 +1,40 @@
+------- Banco de Dados do Site de Receitas do Zé --------
+
+create database db_cc53b;
+
+use db_cc53b;
+
+------------------------------------------------------
+
+CREATE TABLE tb_usuario (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome_de_usuario VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL,
+    senha VARCHAR(255) NOT NULL, 
+    nascimento DATE,
+    telefone VARCHAR(20)
+);
+
+CREATE TABLE tb_receita (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    titulo VARCHAR(255) NOT NULL,
+    descricao TEXT NOT NULL,
+    ingredientes TEXT NOT NULL,
+    instrucoes TEXT NOT NULL,
+    id_usuario INT NOT NULL,
+    criacao DATE NOT NULL,
+
+    FOREIGN KEY (autor_id) REFERENCES tb_usuario(id) ON DELETE CASCADE
+);
+
+CREATE TABLE tb_avaliacao (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    receita_id INT NOT NULL,
+    usuario_id INT NOT NULL,
+    classificacao INT,
+    comentario TEXT,
+    data_avaliacao DATE,
+
+    FOREIGN KEY (receita_id) REFERENCES tb_receita(id) ON DELETE CASCADE,
+    FOREIGN KEY (usuario_id) REFERENCES tb_usuario(id) ON DELETE CASCADE
+);
