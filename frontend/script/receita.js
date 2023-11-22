@@ -160,7 +160,8 @@ async function MostrarAvaliacoes(avalicoes, receita) {
 
     console.log(avalicoes);
 
-    for (const avaliacao of avalicoes) {
+    //insere todos as avaliações no html
+    avalicoes.forEach((avaliacao) => {
         const div = document.createElement('div');
         const h1 = document.createElement('h1');
         const p = document.createElement('p');
@@ -168,19 +169,17 @@ async function MostrarAvaliacoes(avalicoes, receita) {
         const buttonDeletar = document.createElement('button');
         buttonDeletar.innerText = 'Deletar Avaliação';
         
-        
         h1.textContent = avaliacao.nome;
         p.textContent = avaliacao.comentario;
         
-
         pAvalicao.textContent = "Nota: " + avaliacao.classificacao;
         div.appendChild(h1);
         div.appendChild(p);
         div.appendChild(pAvalicao);
-        
-
+    
         const IdUsuarioLogado = localStorage.getItem('id');
         
+        //caso o usuario logado seja o dono da avaliação, se insere um botao para apagar a avaliação
         if (avaliacao.usuario_id == IdUsuarioLogado) {
             buttonDeletar.setAttribute("id_avaliacao", avaliacao.id);
             buttonDeletar.id = "botao_deletar_avaliacao";
@@ -188,9 +187,7 @@ async function MostrarAvaliacoes(avalicoes, receita) {
         }
         
         mainAvaliacoes.appendChild(div);
-       
-        
-    }
+    });
 
     mainAvaliacoes.addEventListener('click', async function (event) {
         const target = event.target;

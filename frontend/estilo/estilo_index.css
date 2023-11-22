@@ -36,7 +36,6 @@ header > .header_pesquisa > .confirm-button {
       font-size: 15px; 
 }
 
-
 /* Logo no header */
 
 header > .header_logo{
@@ -65,7 +64,6 @@ header > .header_logo > a >  h1 {
 /* -------------------------------------------------------------------------- */
 /* carrosel de imagens*/
 
-
 .bem_vindo{
     text-align: center;
     font-size: 50px;
@@ -74,8 +72,6 @@ header > .header_logo > a >  h1 {
 .logo-topo{
     padding: 30px 20px;
 }
-
-
 
 /* -------------------------------------------------------------------------- */
 

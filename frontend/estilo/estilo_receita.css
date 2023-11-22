@@ -55,8 +55,7 @@ header > .header_logo > a >  img {
     padding: 8px;
 }
 
-header > .header_logo > a >  h1 {
-
+header > .header_logo > a >  h1 { 
     color: #000000;
     font-weight: normal;
    
@@ -254,7 +253,6 @@ main > section > .comentario_pessoal > form{
 }
 
 main > section > .comentario_pessoal > form > label{
- 
     padding: 5px;
     text-align: center;
     font-size: 30px;
@@ -317,7 +315,6 @@ main > .main_comentarios > div > p{
 }
 
 main > .main_comentarios > div > button{
-    
     border-radius: 8px;
     font-weight: bold;
     padding: 10px;
@@ -330,7 +327,6 @@ main > .main_comentarios > div > button{
 /*Rodapé*/
 
 body > footer{
-
     clear: both;
     margin: 0;
     background-color: #B19242;
@@ -357,7 +353,6 @@ body > footer > div{
 }
 
 .footer_redesocial > div{
-
     padding: 10px;
     justify-content: center; 
     text-align: center;
@@ -378,9 +373,7 @@ body > footer > div{
 }
 
 .footer_links > div{
-
     padding: 10px;
-   
     text-decoration: none;
     align-items: center;
 }
@@ -422,7 +415,6 @@ body > footer > div{
 }
 
 .footer_logo> a >  h1 {
-
     color: #000000;
     font-weight: normal;
 }

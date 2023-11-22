@@ -1,7 +1,6 @@
 /*Rodapé*/
 
 body > footer{
-
     clear: both;
     margin: 0;
     background-color: #B19242;
@@ -28,7 +27,6 @@ body > footer > div{
 }
 
 .footer_redesocial > div{
-
     padding: 10px;
     justify-content: center; 
     text-align: center;

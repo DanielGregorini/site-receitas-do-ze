@@ -70,10 +70,8 @@ router.put("/:id", isAuthorized, async (req, res) => {
         return res.status(400).json({ error: "Usuário não encontrado para o ID fornecido." });
     }
 
-
     // Verifica se o ID do banco de dados é o mesmo que o ID fornecido como parâmetro
     const resValida = await UsuarioRepository.getByEmail(usuario.email);
-
 
     if (resValida.length > 0 && resValida[0].id != id) {
         return res.status(400).json({ error: "Email já cadastrado" });
@@ -94,8 +92,6 @@ router.put("/:id", isAuthorized, async (req, res) => {
         return res.status(400).json({ error: "errrrr" + err });
     }
 
-
-    
 });
 
 

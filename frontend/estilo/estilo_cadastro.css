@@ -82,7 +82,6 @@ form > a{
 }
 
 .form_label{
-
     font-size: 20px;
     padding: 10px;
 }
@@ -139,7 +138,6 @@ form > div > button{
 /*Rodapé*/
 
 body > footer{
-
     clear: both;
     margin: 0;
     background-color: #B19242;
